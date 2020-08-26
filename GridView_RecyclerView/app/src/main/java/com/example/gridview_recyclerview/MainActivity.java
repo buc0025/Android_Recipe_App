@@ -19,18 +19,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         lstFood = new ArrayList<>();
-        lstFood.add(new Food("Cereal", "breakfast", "The most important meal of the day",R.drawable.cereal));
-        lstFood.add(new Food("Fries", "Snack", "Good to eat at any time!",R.drawable.fries));
-        lstFood.add(new Food("Hamburger", "Lunch", "Big juicy lunch for all.",R.drawable.hamburger));
-        lstFood.add(new Food("Sushi", "Dinner", "Fancy date night food",R.drawable.sushi));
-        lstFood.add(new Food("Pizza", "Dinner", "Best food ever!",R.drawable.pizza));
-        lstFood.add(new Food("Ice Cream", "Dessert", "You scream, I scream, we all scream for ice cream",R.drawable.ice_cream));
-        lstFood.add(new Food("Hamburger", "Lunch", "Big juicy lunch for all.",R.drawable.hamburger));
-        lstFood.add(new Food("Sushi", "Dinner", "Fancy date night food",R.drawable.sushi));
-        lstFood.add(new Food("Cereal", "breakfast", "The most important meal of the day",R.drawable.cereal));
-        lstFood.add(new Food("Fries", "Snack", "Good to eat at any time!",R.drawable.fries));
-        lstFood.add(new Food("Pizza", "Dinner", "Best food ever!",R.drawable.pizza));
-        lstFood.add(new Food("Ice Cream", "Dessert", "You scream, I scream, we all scream for ice cream",R.drawable.ice_cream));
+        lstFood.add(new Food("Breakfast", "breakfast", "The most important meal of the day",R.drawable.cereal));
+        lstFood.add(new Food("Lunch", "Lunch", "Meals to get rid of that afternoon hunger!",R.drawable.hamburger));
+        lstFood.add(new Food("Dinner", "Dinner", "Who can say no to a big juicy steak?",R.drawable.steak_dinner));
+        lstFood.add(new Food("Appetizers", "Appetizer", "Great way to start off dinner", R.drawable.appetizers));
+        lstFood.add(new Food("Dessert", "Dessert", "I scream! You scream! We all scream for ice cream!",R.drawable.ice_cream));
+        lstFood.add(new Food("Snacks", "Snacks", "Junk food to pig out to",R.drawable.chips));
+
 
 
         RecyclerView myrv = (RecyclerView) findViewById(R.id.recyclerview_id);
