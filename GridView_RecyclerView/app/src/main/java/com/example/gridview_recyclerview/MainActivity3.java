@@ -19,19 +19,19 @@ public class MainActivity3 extends AppCompatActivity {
         setContentView(R.layout.activity_main3);
 
         lstFood = new ArrayList<>();
-        lstFood.add(new Food("Dinner", "Dinner", "Who can say no to a big juicy steak?",R.drawable.steak_dinner));
-        lstFood.add(new Food("Dinner", "Dinner", "Who can say no to a big juicy steak?",R.drawable.steak_dinner));
-        lstFood.add(new Food("Dinner", "Dinner", "Who can say no to a big juicy steak?",R.drawable.steak_dinner));
-        lstFood.add(new Food("Dinner", "Dinner", "Who can say no to a big juicy steak?",R.drawable.steak_dinner));
-        lstFood.add(new Food("Dinner", "Dinner", "Who can say no to a big juicy steak?",R.drawable.steak_dinner));
-        lstFood.add(new Food("Dinner", "Dinner", "Who can say no to a big juicy steak?",R.drawable.steak_dinner));
-        lstFood.add(new Food("Dinner", "Dinner", "Who can say no to a big juicy steak?",R.drawable.steak_dinner));
-        lstFood.add(new Food("Dinner", "Dinner", "Who can say no to a big juicy steak?",R.drawable.steak_dinner));
-        lstFood.add(new Food("Dinner", "Dinner", "Who can say no to a big juicy steak?",R.drawable.steak_dinner));
-        lstFood.add(new Food("Dinner", "Dinner", "Who can say no to a big juicy steak?",R.drawable.steak_dinner));
-        lstFood.add(new Food("Dinner", "Dinner", "Who can say no to a big juicy steak?",R.drawable.steak_dinner));
-        lstFood.add(new Food("Dinner", "Dinner", "Who can say no to a big juicy steak?",R.drawable.steak_dinner));
-        lstFood.add(new Food("Dinner", "Dinner", "Who can say no to a big juicy steak?",R.drawable.steak_dinner));
+        lstFood.add(new Food("Steak", "Dinner", "Who can say no to a big juicy steak?",R.drawable.steak_dinner));
+        lstFood.add(new Food("Sushi", "Dinner", "Yummy yummy sushi",R.drawable.sushi));
+        lstFood.add(new Food("Fried Rice", "Dinner", "Easy to prepare chinese food",R.drawable.fried_rice));
+        lstFood.add(new Food("Fried Rice", "Dinner", "Easy to prepare chinese food",R.drawable.fried_rice));
+        lstFood.add(new Food("Steak", "Dinner", "Who can say no to a big juicy steak?",R.drawable.steak_dinner));
+        lstFood.add(new Food("Sushi", "Dinner", "Yummy yummy sushi",R.drawable.sushi));
+        lstFood.add(new Food("Sushi", "Dinner", "Yummy yummy sushi",R.drawable.sushi));
+        lstFood.add(new Food("Steak", "Dinner", "Who can say no to a big juicy steak?",R.drawable.steak_dinner));
+        lstFood.add(new Food("Fried Rice", "Dinner", "Easy to prepare chinese food",R.drawable.fried_rice));
+        lstFood.add(new Food("Steak", "Dinner", "Who can say no to a big juicy steak?",R.drawable.steak_dinner));
+        lstFood.add(new Food("Sushi", "Dinner", "Yummy yummy sushi",R.drawable.sushi));
+        lstFood.add(new Food("Steak", "Dinner", "Who can say no to a big juicy steak?",R.drawable.steak_dinner));
+        lstFood.add(new Food("Fried Rice", "Dinner", "Easy to prepare chinese food",R.drawable.fried_rice));
 
 
 

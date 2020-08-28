@@ -19,18 +19,18 @@ public class MainActivity2 extends AppCompatActivity {
         setContentView(R.layout.activity_main2);
 
         lstFood = new ArrayList<>();
-        lstFood.add(new Food("Breakfast", "breakfast", "The most important meal of the day",R.drawable.cereal));
-        lstFood.add(new Food("Breakfast", "breakfast", "The most important meal of the day",R.drawable.cereal));
-        lstFood.add(new Food("Breakfast", "breakfast", "The most important meal of the day",R.drawable.cereal));
-        lstFood.add(new Food("Breakfast", "breakfast", "The most important meal of the day",R.drawable.cereal));
-        lstFood.add(new Food("Breakfast", "breakfast", "The most important meal of the day",R.drawable.cereal));
-        lstFood.add(new Food("Breakfast", "breakfast", "The most important meal of the day",R.drawable.cereal));
-        lstFood.add(new Food("Breakfast", "breakfast", "The most important meal of the day",R.drawable.cereal));
-        lstFood.add(new Food("Breakfast", "breakfast", "The most important meal of the day",R.drawable.cereal));
-        lstFood.add(new Food("Breakfast", "breakfast", "The most important meal of the day",R.drawable.cereal));
-        lstFood.add(new Food("Breakfast", "breakfast", "The most important meal of the day",R.drawable.cereal));
-        lstFood.add(new Food("Breakfast", "breakfast", "The most important meal of the day",R.drawable.cereal));
-        lstFood.add(new Food("Breakfast", "breakfast", "The most important meal of the day",R.drawable.cereal));
+        lstFood.add(new Food("Cereal", "breakfast", "The most important meal of the day",R.drawable.cereal));
+        lstFood.add(new Food("Pancakes", "breakfast", "Flapjacks for days!",R.drawable.pancakes));
+        lstFood.add(new Food("Waffles", "breakfast", "Top this off with ice cream!",R.drawable.waffles));
+        lstFood.add(new Food("Pancakes", "breakfast", "Flapjacks for days!",R.drawable.pancakes));
+        lstFood.add(new Food("Cereal", "breakfast", "The most important meal of the day",R.drawable.cereal));
+        lstFood.add(new Food("Waffles", "breakfast", "Top this off with ice cream!",R.drawable.waffles));
+        lstFood.add(new Food("Pancakes", "breakfast", "Flapjacks for days!",R.drawable.pancakes));
+        lstFood.add(new Food("Pancakes", "breakfast", "Flapjacks for days!",R.drawable.pancakes));
+        lstFood.add(new Food("Cereal", "breakfast", "The most important meal of the day",R.drawable.cereal));
+        lstFood.add(new Food("Waffles", "breakfast", "Top this off with ice cream!",R.drawable.waffles));
+        lstFood.add(new Food("Cereal", "breakfast", "The most important meal of the day",R.drawable.cereal));
+        lstFood.add(new Food("Pancakes", "breakfast", "Flapjacks for days!",R.drawable.pancakes));
 
 
 
