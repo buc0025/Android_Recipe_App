@@ -14,13 +14,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
+public class RecyclerViewAdapter3 extends RecyclerView.Adapter<RecyclerViewAdapter3.MyViewHolder> {
 
     private Context mContext;
     private List<Food> mData;
 
 
-    public RecyclerViewAdapter(Context mContext, List<Food> mData) {
+    public RecyclerViewAdapter3(Context mContext, List<Food> mData) {
         this.mContext = mContext;
         this.mData = mData;
     }
@@ -47,8 +47,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(mContext, MainActivity2.class);
+                Intent intent = new Intent(mContext, Book_Activity.class);
 
+                //***************Passing data to the book activity**********
+                intent.putExtra("Title", mData.get(position).getTitle());
+                intent.putExtra("Description", mData.get(position).getDescription());
+                intent.putExtra("Thumbnail", mData.get(position).getThumbnail());
+                intent.putExtra("Category", mData.get(position).getCategory());
                 //******start the activity**************
                 mContext.startActivity(intent);
 
