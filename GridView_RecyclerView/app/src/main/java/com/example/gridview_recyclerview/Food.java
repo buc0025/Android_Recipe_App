@@ -1,51 +1,53 @@
 package com.example.gridview_recyclerview;
 
-public class Food {
+import java.io.Serializable;
 
-    private String Title;
-    private String Category;
-    private String Description;
-    private int Thumbnail;
+public class Food implements Serializable {
+
+    private String title;
+    private String category;
+    private String description;
+    private int thumbnail;
 
     public Food() {
     }
 
     public Food(String title, String category, String description, int thumbnail) {
-        Title = title;
-        Category = category;
-        Description = description;
-        Thumbnail = thumbnail;
+        this.title = title;
+        this.category = category;
+        this.description = description;
+        this.thumbnail = thumbnail;
     }
 
     public String getTitle() {
-        return Title;
+        return title;
     }
 
     public String getCategory() {
-        return Category;
+        return category;
     }
 
     public String getDescription() {
-        return Description;
+        return description;
     }
 
     public int getThumbnail() {
-        return Thumbnail;
+        return thumbnail;
     }
 
     public void setTitle(String title) {
-        Title = title;
+        this.title = title;
     }
 
     public void setCategory(String category) {
-        Category = category;
+        this.category = category;
     }
 
     public void setDescription(String description) {
-        Description = description;
+        this.description = description;
     }
 
     public void setThumbnail(int thumbnail) {
-        Thumbnail = thumbnail;
+        this.thumbnail = thumbnail;
     }
 }

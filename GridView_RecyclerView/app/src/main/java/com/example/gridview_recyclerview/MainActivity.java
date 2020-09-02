@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         lstFood = new ArrayList<>();
-        lstFood.add(new Food("Breakfast", "breakfast", "The most important meal of the day",R.drawable.cereal));
+        lstFood.add(new Food("Breakfast", "Breakfast", "The most important meal of the day",R.drawable.cereal));
         lstFood.add(new Food("Lunch", "Lunch", "Meals to get rid of that afternoon hunger!",R.drawable.hamburger));
         lstFood.add(new Food("Dinner", "Dinner", "Who can say no to a big juicy steak?",R.drawable.steak_dinner));
         lstFood.add(new Food("Appetizers", "Appetizer", "Great way to start off dinner", R.drawable.appetizers));

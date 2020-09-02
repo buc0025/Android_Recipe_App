@@ -43,11 +43,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.img_book_thumbnail.setImageResource(mData.get(position).getThumbnail());
 
         //*******Set onclick Listener***********
+
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                int debug = position;
                 Intent intent = new Intent(mContext, MainActivity2.class);
+                intent.putExtra("meal_type", mData.get(position).getCategory());
+
 
                 //******start the activity**************
                 mContext.startActivity(intent);
