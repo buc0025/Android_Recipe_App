@@ -65,6 +65,7 @@ public class RecyclerViewAdapter2 extends RecyclerView.Adapter<RecyclerViewAdapt
 
     @Override
     public int getItemCount() {
+
         return mData.size();
     }
 
