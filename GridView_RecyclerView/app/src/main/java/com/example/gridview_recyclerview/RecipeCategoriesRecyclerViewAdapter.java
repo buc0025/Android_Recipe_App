@@ -19,15 +19,15 @@ import java.util.List;
 
 public class RecipeCategoriesRecyclerViewAdapter extends RecyclerView.Adapter<RecipeCategoriesRecyclerViewAdapter.MyViewHolder> implements Filterable {
 
-    private Context mContext;
-    private List<Food> recipeData;
-    private List<Food> recipeDataSearch;
+    private Context context;
+    private List<FoodItem> recipeData;
+    private List<FoodItem> recipeDataSearch;
 
 
-    public RecipeCategoriesRecyclerViewAdapter(Context mContext, List<Food> mData) {
-        this.mContext = mContext;
-        this.recipeData = mData;
-        recipeDataSearch = new ArrayList<>(mData);
+    public RecipeCategoriesRecyclerViewAdapter(Context context, List<FoodItem> recipeData) {
+        this.context = context;
+        this.recipeData = recipeData;
+        recipeDataSearch = new ArrayList<>(recipeData);
     }
 
     @NonNull
@@ -35,7 +35,7 @@ public class RecipeCategoriesRecyclerViewAdapter extends RecyclerView.Adapter<Re
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View view;
-        LayoutInflater mInflater = LayoutInflater.from(mContext);
+        LayoutInflater mInflater = LayoutInflater.from(context);
         view = mInflater.inflate(R.layout.cardview_of_recipes, parent, false);
 
         return new MyViewHolder(view);
@@ -53,12 +53,12 @@ public class RecipeCategoriesRecyclerViewAdapter extends RecyclerView.Adapter<Re
             @Override
             public void onClick(View v) {
                 int debug = position;
-                Intent intent = new Intent(mContext, InsideRecipeCategory.class);
+                Intent intent = new Intent(context, InsideRecipeCategory.class);
                 intent.putExtra("meal_type", recipeData.get(position).getCategory());
 
 
                 //******start the activity**************
-                mContext.startActivity(intent);
+                context.startActivity(intent);
 
             }
         });
@@ -93,14 +93,14 @@ public class RecipeCategoriesRecyclerViewAdapter extends RecyclerView.Adapter<Re
     private Filter exampleFilter = new Filter() {
         @Override
         protected FilterResults performFiltering(CharSequence constraint) {
-            List<Food> filteredList = new ArrayList<>();
+            List<FoodItem> filteredList = new ArrayList<>();
 
             if (constraint == null || constraint.length() == 0) {
                 filteredList.addAll(recipeDataSearch);
             } else {
                 String filterPattern = constraint.toString().toLowerCase().trim();
 
-                for (Food item : recipeDataSearch) {
+                for (FoodItem item : recipeDataSearch) {
                     if (item.getTitle().toLowerCase().contains(filterPattern)) {
                         filteredList.add(item);
                     }

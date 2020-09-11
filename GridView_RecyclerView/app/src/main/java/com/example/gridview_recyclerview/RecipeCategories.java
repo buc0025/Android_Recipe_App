@@ -1,10 +1,11 @@
 package com.example.gridview_recyclerview;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -16,48 +17,43 @@ import java.util.List;
 public class RecipeCategories extends AppCompatActivity {
     private RecipeCategoriesRecyclerViewAdapter recyclerViewAdapter;
 
-    List<Food> categoriesOfFood;
+    List<FoodItem> foodCategories;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recipe_categories_page);
 
-        categoriesOfFood = new ArrayList<>();
-        categoriesOfFood.add(new Food("Breakfast", "Breakfast", "The most important meal of the day",R.drawable.cereal));
-        categoriesOfFood.add(new Food("Lunch", "Lunch", "Meals to get rid of that afternoon hunger!",R.drawable.hamburger));
-        categoriesOfFood.add(new Food("Dinner", "Dinner", "Who can say no to a big juicy steak?",R.drawable.steak_dinner));
-        categoriesOfFood.add(new Food("Appetizers", "Appetizer", "Great way to start off dinner", R.drawable.appetizers));
-        categoriesOfFood.add(new Food("Dessert", "Dessert", "I scream! You scream! We all scream for ice cream!",R.drawable.ice_cream));
-        categoriesOfFood.add(new Food("Snacks", "Snacks", "Junk food to pig out to",R.drawable.chips));
+        foodCategories = new ArrayList<>();
+        foodCategories.add(new FoodItem("Breakfast", "Breakfast", "breakfast category", "The most important meal of the day",R.drawable.cereal));
+        foodCategories.add(new FoodItem("Lunch", "Lunch", "lunch category","Meals to get rid of that afternoon hunger!",R.drawable.hamburger));
+        foodCategories.add(new FoodItem("Dinner", "Dinner", "dinner category","Who can say no to a big juicy steak?",R.drawable.steak_dinner));
+        foodCategories.add(new FoodItem("Appetizers", "Appetizer", "appetizer category","Great way to start off dinner", R.drawable.appetizers));
+        foodCategories.add(new FoodItem("Dessert", "Dessert", "dessert category","I scream! You scream! We all scream for ice cream!",R.drawable.ice_cream));
+        foodCategories.add(new FoodItem("Snacks", "Snacks", "snacks category","Junk food to pig out to",R.drawable.chips));
 
 
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview_id);
-        recyclerViewAdapter = new RecipeCategoriesRecyclerViewAdapter(this, categoriesOfFood);
+        recyclerViewAdapter = new RecipeCategoriesRecyclerViewAdapter(this, foodCategories);
         recyclerView.setLayoutManager(new GridLayoutManager(this,3));
         recyclerView.setAdapter(recyclerViewAdapter);
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.example_menu, menu);
+        menuInflater.inflate(R.menu.favorites_toolbar, menu);
 
-        MenuItem searchItem = menu.findItem(R.id.action_search);
-        SearchView searchView = (SearchView) searchItem.getActionView();
-
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                recyclerViewAdapter.getFilter().filter(newText);
-                return false;
-            }
-        });
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.favorites_toolBar) {
+            Intent intent = new Intent(RecipeCategories.this, Favorites.class);
+            startActivity(intent);
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
