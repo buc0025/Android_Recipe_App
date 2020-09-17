@@ -25,12 +25,12 @@ public class RecipeCategories extends AppCompatActivity {
         setContentView(R.layout.recipe_categories_page);
 
         foodCategories = new ArrayList<>();
-        foodCategories.add(new FoodItem("Breakfast", "Breakfast", "breakfast category", "The most important meal of the day",R.drawable.cereal));
-        foodCategories.add(new FoodItem("Lunch", "Lunch", "lunch category","Meals to get rid of that afternoon hunger!",R.drawable.hamburger));
-        foodCategories.add(new FoodItem("Dinner", "Dinner", "dinner category","Who can say no to a big juicy steak?",R.drawable.steak_dinner));
-        foodCategories.add(new FoodItem("Appetizers", "Appetizer", "appetizer category","Great way to start off dinner", R.drawable.appetizers));
-        foodCategories.add(new FoodItem("Dessert", "Dessert", "dessert category","I scream! You scream! We all scream for ice cream!",R.drawable.ice_cream));
-        foodCategories.add(new FoodItem("Snacks", "Snacks", "snacks category","Junk food to pig out to",R.drawable.chips));
+        foodCategories.add(new FoodItem("Breakfast", "Breakfast", "breakfast category", "The most important meal of the day",R.drawable.cereal, "no"));
+        foodCategories.add(new FoodItem("Lunch", "Lunch", "lunch category","Meals to get rid of that afternoon hunger!",R.drawable.hamburger, "no"));
+        foodCategories.add(new FoodItem("Dinner", "Dinner", "dinner category","Who can say no to a big juicy steak?",R.drawable.steak_dinner, "no"));
+        foodCategories.add(new FoodItem("Appetizers", "Appetizer", "appetizer category","Great way to start off dinner", R.drawable.appetizers, "no"));
+        foodCategories.add(new FoodItem("Dessert", "Dessert", "dessert category","I scream! You scream! We all scream for ice cream!",R.drawable.ice_cream, "no"));
+        foodCategories.add(new FoodItem("Snacks", "Snacks", "snacks category","Junk food to pig out to",R.drawable.chips, "no"));
 
 
 

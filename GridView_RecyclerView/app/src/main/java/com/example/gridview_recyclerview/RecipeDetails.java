@@ -2,15 +2,20 @@ package com.example.gridview_recyclerview;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class RecipeDetails extends AppCompatActivity {
 
     private TextView recipe_name, recipe_description, recipe_category;
     private ImageView recipe_image;
+    private Button favBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +26,14 @@ public class RecipeDetails extends AppCompatActivity {
         recipe_description = (TextView) findViewById(R.id.txtDescription);
         recipe_category = (TextView) findViewById(R.id.txtCategory);
         recipe_image = (ImageView) findViewById(R.id.bookthumbnail);
+        favBtn = findViewById(R.id.favBtn);
+
+        favBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(RecipeDetails.this, "Favorite button pressed", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         //***********Receive data*************
         Intent intent = getIntent();

@@ -52,7 +52,7 @@ public class RecipeCategoriesRecyclerViewAdapter extends RecyclerView.Adapter<Re
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int debug = position;
+
                 Intent intent = new Intent(context, InsideRecipeCategory.class);
                 intent.putExtra("meal_type", recipeData.get(position).getCategory());
 
