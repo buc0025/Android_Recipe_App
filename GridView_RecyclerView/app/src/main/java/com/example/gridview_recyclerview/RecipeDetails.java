@@ -32,6 +32,15 @@ public class RecipeDetails extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(RecipeDetails.this, "Favorite button pressed", Toast.LENGTH_SHORT).show();
+
+                //****how to get this foodItem to hold all variables?*******
+                RecipeManager recipeManager = new RecipeManager();
+                FoodItem foodItem = new FoodItem();
+
+                FavoritesManager favoritesManager = new FavoritesManager(RecipeDetails.this);
+
+                //*****saving empty foodItem right now?*******
+                favoritesManager.saveFavorites(foodItem);
             }
         });
 

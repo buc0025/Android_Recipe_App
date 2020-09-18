@@ -9,26 +9,16 @@ public class FoodItem implements Serializable {
     private String description;
     private int thumbnail;
     private String uId;
-    private String favorited;
 
     public FoodItem() {
     }
 
-    public FoodItem(String title, String category, String key_id, String description, int thumbnail, String favorited) {
+    public FoodItem(String title, String category, String key_id, String description, int thumbnail) {
         this.title = title;
         this.category = category;
         this.description = description;
         this.thumbnail = thumbnail;
         this.uId = key_id;
-        this.favorited = favorited;
-    }
-
-    public String getFavorited() {
-        return favorited;
-    }
-
-    public void setFavorited(String favorited) {
-        this.favorited = favorited;
     }
 
     public String getuId() {

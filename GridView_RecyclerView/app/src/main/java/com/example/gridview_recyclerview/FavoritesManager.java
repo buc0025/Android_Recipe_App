@@ -13,19 +13,15 @@ public class FavoritesManager {
     private SharedPreferences sharedPreferences;
 
     public FavoritesManager(Context context) {
-
         sharedPreferences = context.getSharedPreferences(RECIPE_SHARED_PREFS, Context.MODE_PRIVATE);
-
     }
 
     public Set<FoodItem> getFavorites() { //to do: return all food items
 
         Set<FoodItem> foodItems = new HashSet<>();
-        RecipeManager recipeManager = new RecipeManager();
-        Map<String, ?> allEntries = sharedPreferences.getAll();
 
-        for (String entry : allEntries.keySet()) {
-            foodItems.add(recipeManager.recipes.get(entry));
+        for (String entry : sharedPreferences.getAll().keySet()) {
+            foodItems.add(RecipeManager.recipeById.get(entry));
         }
 
         return foodItems;
@@ -35,18 +31,15 @@ public class FavoritesManager {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(foodItem.getuId(), "");
         editor.apply();
-
     }
 
     public void removeFavorites(FoodItem foodItem) {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.remove(foodItem.getuId());
         editor.apply();
-
     }
 
     public boolean isFavorited(FoodItem foodItem) {
         return sharedPreferences.contains(foodItem.getuId());
-
     }
 }

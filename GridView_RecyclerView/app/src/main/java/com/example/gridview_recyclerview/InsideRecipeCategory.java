@@ -20,13 +20,6 @@ public class InsideRecipeCategory extends AppCompatActivity {
 
     private InsideRecipeCategoryRecyclerViewAdapter recyclerViewAdapter2;
 
-    List<FoodItem> breakfastList;
-    List<FoodItem> lunchList;
-    List<FoodItem> dinnerList;
-    List<FoodItem> appetizerList;
-    List<FoodItem> dessertList;
-    List<FoodItem> snackList;
-
     Map<String, List<FoodItem>> categoriesMap = new HashMap<>();
 
     @Override
@@ -34,58 +27,12 @@ public class InsideRecipeCategory extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.inside_recipe_category);
 
-
-        breakfastList = new ArrayList<>();
-        breakfastList.add(new FoodItem("Cereal", "Breakfast", "cereal", "Lorem ipsum dolor sit amet, consectetur adipiscing elit.\n" +
-                "Donec non ex in turpis porttitor mattis vel a velit.\n" +
-                "Donec iaculis leo quis urna cursus, vitae molestie tortor aliquet.\n" +
-                "Nulla volutpat turpis vel auctor efficitur.\n" +
-                "Maecenas vulputate lorem sit amet dolor eleifend, at feugiat enim sollicitudin.\n" +
-                "Sed ac ligula faucibus, dignissim risus auctor, blandit eros.\n" +
-                "Aenean in tellus pulvinar, porttitor velit at, ullamcorper tellus.\n" +
-                "Duis aliquam neque non lorem sagittis lobortis non sit amet arcu.",R.drawable.cereal, "no"));
-        breakfastList.add(new FoodItem("Pancakes", "Breakfast", "pancakes","Flapjacks for days!",R.drawable.pancakes, "no"));
-        breakfastList.add(new FoodItem("Waffles", "Breakfast", "waffles","Top this off with ice cream!",R.drawable.waffles, "no"));
-        breakfastList.add(new FoodItem("Pancakes", "Breakfast", "pancakes","Flapjacks for days!",R.drawable.pancakes, "no"));
-        breakfastList.add(new FoodItem("Cereal", "Breakfast", "cereal","The most important meal of the day",R.drawable.cereal, "no"));
-
-        lunchList = new ArrayList<>();
-        lunchList.add(new FoodItem("Burger", "Lunch", "burger", "big juicy burger", R.drawable.hamburger, "no"));
-        lunchList.add(new FoodItem("Pizza", "Lunch", "Pizza", "big juicy burger", R.drawable.pizza, "no"));
-        lunchList.add(new FoodItem("Burger", "Lunch", "burger", "big juicy burger", R.drawable.hamburger, "no"));
-        lunchList.add(new FoodItem("Sushi", "Lunch", "sushi", "big juicy burger", R.drawable.sushi, "no"));
-
-        dinnerList = new ArrayList<>();
-        dinnerList.add(new FoodItem("Steak", "Dinner", "steak","Who can say no to a big juicy steak?",R.drawable.steak_dinner, "no"));
-        dinnerList.add(new FoodItem("Sushi", "Dinner", "sushi","Yummy yummy sushi",R.drawable.sushi, "no"));
-        dinnerList.add(new FoodItem("Fried Rice", "Dinner", "fried rice","Easy to prepare chinese food",R.drawable.fried_rice, "no"));
-        dinnerList.add(new FoodItem("Fried Rice", "Dinner", "fried rice","Easy to prepare chinese food",R.drawable.fried_rice, "no"));
-        dinnerList.add(new FoodItem("Steak", "Dinner", "steak","Who can say no to a big juicy steak?",R.drawable.steak_dinner, "no"));
-
-        appetizerList= new ArrayList<>();
-        appetizerList.add(new FoodItem("Sampler", "Appetizer", "sampler", "try everything", R.drawable.appetizers, "no"));
-        appetizerList.add(new FoodItem("Fries", "Appetizer", "fries", "try everything", R.drawable.fries, "no"));
-        appetizerList.add(new FoodItem("Sampler", "Appetizer", "sampler", "try everything", R.drawable.appetizers, "no"));
-        appetizerList.add(new FoodItem("Sliders", "Appetizer", "sliders", "try everything", R.drawable.hamburger, "no"));
-
-        snackList = new ArrayList<>();
-        snackList.add(new FoodItem("Onion Rings", "Snacks", "onion rings","Great for any time of day", R.drawable.appetizers, "no"));
-        snackList.add(new FoodItem("Ice Cream", "Snacks", "ice cream","I scream! You scream! We all scream for ice cream!",R.drawable.ice_cream, "no"));
-        snackList.add(new FoodItem("Chips", "Snacks", "chips","Junk food to pig out to",R.drawable.chips, "no"));
-
-        dessertList = new ArrayList<>();
-        dessertList.add(new FoodItem("Ice Cream", "Dessert", "ice cream", "yummy ice cream", R.drawable.ice_cream, "no"));
-        dessertList.add(new FoodItem("Waffles", "Dessert", "waffle", "yummy ice cream", R.drawable.waffles, "no"));
-        dessertList.add(new FoodItem("Pancakes", "Dessert", "pancakes", "yummy ice cream", R.drawable.pancakes, "no"));
-        dessertList.add(new FoodItem("Pancakes", "Dessert", "pancakes", "yummy ice cream", R.drawable.pancakes, "no"));
-
-
-        categoriesMap.put("Breakfast", breakfastList);
-        categoriesMap.put("Lunch", lunchList);
-        categoriesMap.put("Dinner", dinnerList);
-        categoriesMap.put("Appetizer", appetizerList);
-        categoriesMap.put("Dessert", dessertList);
-        categoriesMap.put("Snacks", snackList);
+        categoriesMap.put("Breakfast", RecipeManager.breakfastList);
+        categoriesMap.put("Lunch", RecipeManager.lunchList);
+        categoriesMap.put("Dinner", RecipeManager.dinnerList);
+        categoriesMap.put("Appetizer", RecipeManager.appetizerList);
+        categoriesMap.put("Dessert", RecipeManager.dessertList);
+        categoriesMap.put("Snacks", RecipeManager.snackList);
 
         Intent intent = getIntent();
         String category = intent.getExtras().getString("meal_type");
