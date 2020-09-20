@@ -83,15 +83,4 @@ class RecipeManager {
         recipeById.put("pancakes3", new FoodItem("Pancakes", "Dessert", "pancakes3", "yummy ice cream", R.drawable.pancakes));
         recipeById.put("pancakes4", new FoodItem("Pancakes", "Dessert", "pancakes4", "yummy ice cream", R.drawable.pancakes));
     }
-    public List<FoodItem> getFoodCategory(Map<String, FoodItem> food) {
-        List<FoodItem> items = new ArrayList<>();
-        for (String f : foodId(food)) {
-            items.add(recipeById.get(f));
-        }
-
-        return items;
-    }
-    public Set<String> foodId(Map<String, ?> food) {
-        return food.keySet();
-    }
 }
