@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 public class RecipeDetails extends AppCompatActivity {
 
-    private TextView recipe_name, recipe_description, recipe_category;
+    private TextView recipe_name, recipe_description, recipe_category, recipe_ingredients, recipe_directions;
     private ImageView recipe_image;
     private Button favBtn;
 
@@ -26,6 +26,8 @@ public class RecipeDetails extends AppCompatActivity {
         recipe_description = (TextView) findViewById(R.id.txtDescription);
         recipe_category = (TextView) findViewById(R.id.txtCategory);
         recipe_image = (ImageView) findViewById(R.id.bookthumbnail);
+        recipe_ingredients = (TextView) findViewById(R.id.txtIngredients);
+        recipe_directions = (TextView) findViewById(R.id.txtDirections);
         favBtn = findViewById(R.id.favBtn);
 
         favBtn.setOnClickListener(new View.OnClickListener() {
@@ -50,6 +52,8 @@ public class RecipeDetails extends AppCompatActivity {
         String Description = intent.getExtras().getString("Description");
         String Category = intent.getExtras().getString("Category");
         int image = intent.getExtras().getInt("Thumbnail");
+        String Ingredients = intent.getExtras().getString("Ingredients");
+        String Directions = intent.getExtras().getString("Directions");
 
         //*********Setting values**********
 
@@ -57,6 +61,8 @@ public class RecipeDetails extends AppCompatActivity {
         recipe_description.setText(Description);
         recipe_category.setText(Category);
         recipe_image.setImageResource(image);
+        recipe_ingredients.setText(Ingredients);
+        recipe_directions.setText(Directions);
 
     }
 }

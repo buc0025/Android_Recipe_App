@@ -4,21 +4,41 @@ import java.io.Serializable;
 
 public class FoodItem implements Serializable {
 
+    private String uId;
     private String title;
     private String category;
     private String description;
+    private String ingredients;
+    private String directions;
     private int thumbnail;
-    private String uId;
 
     public FoodItem() {
     }
 
-    public FoodItem(String title, String category, String key_id, String description, int thumbnail) {
+    public FoodItem(String key_id, String title, String category, String description, String ingredients, String directions, int thumbnail) {
+        this.uId = key_id;
         this.title = title;
         this.category = category;
         this.description = description;
+        this.ingredients = ingredients;
+        this.directions = directions;
         this.thumbnail = thumbnail;
-        this.uId = key_id;
+    }
+
+    public String getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(String ingredients) {
+        this.ingredients = ingredients;
+    }
+
+    public String getDirections() {
+        return directions;
+    }
+
+    public void setDirections(String directions) {
+        this.directions = directions;
     }
 
     public String getuId() {
