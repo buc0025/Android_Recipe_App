@@ -30,30 +30,29 @@ public class RecipeDetails extends AppCompatActivity {
         recipe_directions = (TextView) findViewById(R.id.txtDirections);
         favBtn = findViewById(R.id.favBtn);
 
+        //***********Receive data*************
+        Intent intent = getIntent();
+        final String id = intent.getExtras().getString("Title");
+        final String Title = intent.getExtras().getString("Title");
+        final String Category = intent.getExtras().getString("Category");
+        final String Description = intent.getExtras().getString("Description");
+        final String Ingredients = intent.getExtras().getString("Ingredients");
+        final String Directions = intent.getExtras().getString("Directions");
+        final int image = intent.getExtras().getInt("Thumbnail");
+
         favBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(RecipeDetails.this, "Favorite button pressed", Toast.LENGTH_SHORT).show();
 
-                //****how to get this foodItem to hold all variables?*******
-                RecipeManager recipeManager = new RecipeManager();
-                FoodItem foodItem = new FoodItem();
+                FoodItem foodItem = new FoodItem(id, Title, Category, Description, Ingredients, Directions, image);
 
                 FavoritesManager favoritesManager = new FavoritesManager(RecipeDetails.this);
 
-                //*****saving empty foodItem right now?*******
                 favoritesManager.saveFavorites(foodItem);
             }
         });
 
-        //***********Receive data*************
-        Intent intent = getIntent();
-        String Title = intent.getExtras().getString("Title");
-        String Description = intent.getExtras().getString("Description");
-        String Category = intent.getExtras().getString("Category");
-        int image = intent.getExtras().getInt("Thumbnail");
-        String Ingredients = intent.getExtras().getString("Ingredients");
-        String Directions = intent.getExtras().getString("Directions");
 
         //*********Setting values**********
 

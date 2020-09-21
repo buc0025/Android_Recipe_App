@@ -55,12 +55,13 @@ public class InsideRecipeCategoryRecyclerViewAdapter extends RecyclerView.Adapte
                 Intent intent = new Intent(context, RecipeDetails.class);
 
                 //***************Passing data to the RecipeDetails activity**********
+                intent.putExtra("ID", recipeData.get(position).getTitle());
                 intent.putExtra("Title", recipeData.get(position).getTitle());
-                intent.putExtra("Description", recipeData.get(position).getDescription());
-                intent.putExtra("Thumbnail", recipeData.get(position).getThumbnail());
                 intent.putExtra("Category", recipeData.get(position).getCategory());
+                intent.putExtra("Description", recipeData.get(position).getDescription());
                 intent.putExtra("Ingredients", recipeData.get(position).getIngredients());
                 intent.putExtra("Directions", recipeData.get(position).getDirections());
+                intent.putExtra("Thumbnail", recipeData.get(position).getThumbnail());
                 //******start the activity**************
                 context.startActivity(intent);
 
