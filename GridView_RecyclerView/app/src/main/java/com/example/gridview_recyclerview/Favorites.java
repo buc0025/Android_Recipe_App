@@ -15,8 +15,9 @@ public class Favorites extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favorites);
 
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview3_id);
-        recyclerViewAdapter3 = new FavoritesRecyclerViewAdapter(this, RecipeManager.dinnerList);
+        FavoritesManager favoritesManager = new FavoritesManager(Favorites.this);
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview3Id);
+        recyclerViewAdapter3 = new FavoritesRecyclerViewAdapter(this, favoritesManager.getFavorites());
         recyclerView.setLayoutManager(new GridLayoutManager(this,3));
         recyclerView.setAdapter(recyclerViewAdapter3);
     }

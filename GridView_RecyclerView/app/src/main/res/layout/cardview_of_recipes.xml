@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/cardView_id"
+    android:id="@+id/cardViewId"
     android:clickable="true"
     android:foreground="?android:attr/selectableItemBackground"
     android:layout_width="120dp"
@@ -15,14 +15,14 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/book_img_id"
+            android:id="@+id/bookImgId"
             android:layout_width="match_parent"
             android:layout_height="160dp"
             android:scaleType="centerCrop"
             android:background="#2d2d2d"/>
 
         <TextView
-            android:id="@+id/book_title_id"
+            android:id="@+id/bookTitleId"
             android:textColor="#2d2d2d"
             android:textSize="13sp"
             android:gravity="center"

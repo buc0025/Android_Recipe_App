@@ -11,7 +11,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -37,8 +36,7 @@ public class InsideRecipeCategory extends AppCompatActivity {
         Intent intent = getIntent();
         String category = intent.getExtras().getString("meal_type");
 
-
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview2_id);
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview2Id);
         recyclerViewAdapter2 = new InsideRecipeCategoryRecyclerViewAdapter(this, categoriesMap.get(category));
         recyclerView.setLayoutManager(new GridLayoutManager(this,3));
         recyclerView.setAdapter(recyclerViewAdapter2);
@@ -49,7 +47,7 @@ public class InsideRecipeCategory extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.example_menu, menu);
 
-        MenuItem searchItem = menu.findItem(R.id.action_search);
+        MenuItem searchItem = menu.findItem(R.id.actionSearch);
         SearchView searchView = (SearchView) searchItem.getActionView();
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {

@@ -2,7 +2,6 @@ package com.example.gridview_recyclerview;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -13,8 +12,8 @@ import android.widget.Toast;
 
 public class RecipeDetails extends AppCompatActivity {
 
-    private TextView recipe_name, recipe_description, recipe_category, recipe_ingredients, recipe_directions;
-    private ImageView recipe_image;
+    private TextView recipeName, recipeDescription, recipeCategory, recipeIngredients, recipeDirections;
+    private ImageView recipeImage;
     private Button favBtn;
 
     @Override
@@ -22,22 +21,22 @@ public class RecipeDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recipe_page);
 
-        recipe_name = (TextView) findViewById(R.id.txtTitle);
-        recipe_description = (TextView) findViewById(R.id.txtDescription);
-        recipe_category = (TextView) findViewById(R.id.txtCategory);
-        recipe_image = (ImageView) findViewById(R.id.bookthumbnail);
-        recipe_ingredients = (TextView) findViewById(R.id.txtIngredients);
-        recipe_directions = (TextView) findViewById(R.id.txtDirections);
+        recipeName = (TextView) findViewById(R.id.txtTitle);
+        recipeDescription = (TextView) findViewById(R.id.txtDescription);
+        recipeCategory = (TextView) findViewById(R.id.txtCategory);
+        recipeImage = (ImageView) findViewById(R.id.bookThumbnail);
+        recipeIngredients = (TextView) findViewById(R.id.txtIngredients);
+        recipeDirections = (TextView) findViewById(R.id.txtDirections);
         favBtn = findViewById(R.id.favBtn);
 
         //***********Receive data*************
         Intent intent = getIntent();
         final String id = intent.getExtras().getString("Title");
-        final String Title = intent.getExtras().getString("Title");
-        final String Category = intent.getExtras().getString("Category");
-        final String Description = intent.getExtras().getString("Description");
-        final String Ingredients = intent.getExtras().getString("Ingredients");
-        final String Directions = intent.getExtras().getString("Directions");
+        final String title = intent.getExtras().getString("Title");
+        final String category = intent.getExtras().getString("Category");
+        final String description = intent.getExtras().getString("Description");
+        final String ingredients = intent.getExtras().getString("Ingredients");
+        final String directions = intent.getExtras().getString("Directions");
         final int image = intent.getExtras().getInt("Thumbnail");
 
         favBtn.setOnClickListener(new View.OnClickListener() {
@@ -45,7 +44,7 @@ public class RecipeDetails extends AppCompatActivity {
             public void onClick(View v) {
                 Toast.makeText(RecipeDetails.this, "Favorite button pressed", Toast.LENGTH_SHORT).show();
 
-                FoodItem foodItem = new FoodItem(id, Title, Category, Description, Ingredients, Directions, image);
+                FoodItem foodItem = new FoodItem(id, title, category, description, ingredients, directions, image);
 
                 FavoritesManager favoritesManager = new FavoritesManager(RecipeDetails.this);
 
@@ -53,15 +52,12 @@ public class RecipeDetails extends AppCompatActivity {
             }
         });
 
-
         //*********Setting values**********
-
-        recipe_name.setText(Title);
-        recipe_description.setText(Description);
-        recipe_category.setText(Category);
-        recipe_image.setImageResource(image);
-        recipe_ingredients.setText(Ingredients);
-        recipe_directions.setText(Directions);
-
+        recipeName.setText(title);
+        recipeDescription.setText(description);
+        recipeCategory.setText(category);
+        recipeImage.setImageResource(image);
+        recipeIngredients.setText(ingredients);
+        recipeDirections.setText(directions);
     }
 }

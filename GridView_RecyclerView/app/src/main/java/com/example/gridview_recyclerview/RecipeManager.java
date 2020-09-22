@@ -64,29 +64,23 @@ class RecipeManager {
         mainPageFoodCategories.add(new FoodItem("Snacks category", "Snacks", "Snacks","Junk food to pig out to","salt\n"+"pepper\n"+"egg", "put in over for 20 minutes\n"+"take out to cool",R.drawable.chips));
 
         recipeById = new HashMap<>();
-        recipeById.put("pancakes", new FoodItem("Pancakes", "Pancakes", "Breakfast","Flapjacks for days!","salt\n"+"pepper\n"+"egg", "put in over for 20 minutes\n"+"take out to cool",R.drawable.pancakes));
-        recipeById.put("waffles", new FoodItem("Waffles", "Waffles", "Breakfast","Top this off with ice cream!","salt\n"+"pepper\n"+"egg", "put in over for 20 minutes\n"+"take out to cool",R.drawable.waffles));
-        recipeById.put("pancakes2", new FoodItem("Pancakes2", "Pancakes", "Breakfast","Flapjacks for days!","salt\n"+"pepper\n"+"egg", "put in over for 20 minutes\n"+"take out to cool",R.drawable.pancakes));
-        recipeById.put("cereal", new FoodItem("Cereal", "Cereal", "Breakfast","The most important meal of the day","salt\n"+"pepper\n"+"egg", "put in over for 20 minutes\n"+"take out to cool",R.drawable.cereal));
-        recipeById.put("burger", new FoodItem("Burger", "Burger", "Lunch", "big juicy burger", "salt\n"+"pepper\n"+"egg", "put in over for 20 minutes\n"+"take out to cool",R.drawable.hamburger));
-        recipeById.put("pizza", new FoodItem("Pizza", "Pizza", "Lunch", "big juicy burger", "salt\n"+"pepper\n"+"egg", "put in over for 20 minutes\n"+"take out to cool",R.drawable.pizza));
-        recipeById.put("burger2", new FoodItem("Burger2", "Burger", "Lunch", "big juicy burger", "salt\n"+"pepper\n"+"egg", "put in over for 20 minutes\n"+"take out to cool",R.drawable.hamburger));
-        recipeById.put("sushi",new FoodItem("Sushi", "Sushi", "Lunch", "big juicy burger", "salt\n"+"pepper\n"+"egg", "put in over for 20 minutes\n"+"take out to cool",R.drawable.sushi));
-        recipeById.put("steak", new FoodItem("Steak", "Steak", "Dinner","Who can say no to a big juicy steak?","salt\n"+"pepper\n"+"egg", "put in over for 20 minutes\n"+"take out to cool",R.drawable.steak_dinner));
-        recipeById.put("sushi2", new FoodItem("Sushi2", "Sushi", "Dinner","Yummy yummy sushi","salt\n"+"pepper\n"+"egg", "put in over for 20 minutes\n"+"take out to cool",R.drawable.sushi));
-        recipeById.put("fried rice", new FoodItem("Fried Rice", "Fried Rice", "Dinner","Easy to prepare chinese food","salt\n"+"pepper\n"+"egg", "put in over for 20 minutes\n"+"take out to cool",R.drawable.fried_rice));
-        recipeById.put("fried rice2", new FoodItem("Fried Rice2", "Fried Rice", "Dinner","Easy to prepare chinese food","salt\n"+"pepper\n"+"egg", "put in over for 20 minutes\n"+"take out to cool",R.drawable.fried_rice));
-        recipeById.put("steak2", new FoodItem("Steak2", "Steak", "Dinner","Who can say no to a big juicy steak?","salt\n"+"pepper\n"+"egg", "put in over for 20 minutes\n"+"take out to cool",R.drawable.steak_dinner));
-        recipeById.put("sampler", new FoodItem("Sampler", "Sampler", "Appetizer", "try everything", "salt\n"+"pepper\n"+"egg", "put in over for 20 minutes\n"+"take out to cool",R.drawable.appetizers));
-        recipeById.put("fries", new FoodItem("Fries", "Fries", "Appetizer", "try everything", "salt\n"+"pepper\n"+"egg", "put in over for 20 minutes\n"+"take out to cool",R.drawable.fries));
-        recipeById.put("sampler2", new FoodItem("Sampler2", "Sampler", "Appetizer", "try everything", "salt\n"+"pepper\n"+"egg", "put in over for 20 minutes\n"+"take out to cool",R.drawable.appetizers));
-        recipeById.put("sliders", new FoodItem("Sliders", "Sliders", "Appetizer", "try everything", "salt\n"+"pepper\n"+"egg", "put in over for 20 minutes\n"+"take out to cool",R.drawable.hamburger));
-        recipeById.put("onion rings", new FoodItem("Onion Rings", "Onion Rings", "Snacks","Great for any time of day", "salt\n"+"pepper\n"+"egg", "put in over for 20 minutes\n"+"take out to cool",R.drawable.appetizers));
-        recipeById.put("ice cream", new FoodItem("Ice Cream", "Ice Cream", "Snacks","I scream! You scream! We all scream for ice cream!","salt\n"+"pepper\n"+"egg", "put in over for 20 minutes\n"+"take out to cool",R.drawable.ice_cream));
-        recipeById.put("chips", new FoodItem("Chips", "Chips", "Snacks","Junk food to pig out to","salt\n"+"pepper\n"+"egg", "put in over for 20 minutes\n"+"take out to cool",R.drawable.chips));
-        recipeById.put("ice cream2", new FoodItem("Ice Cream2", "Ice Cream", "Dessert", "yummy ice cream", "salt\n"+"pepper\n"+"egg", "put in over for 20 minutes\n"+"take out to cool",R.drawable.ice_cream));
-        recipeById.put("waffles2", new FoodItem("Waffles2", "Waffles", "Dessert", "yummy ice cream", "salt\n"+"pepper\n"+"egg", "put in over for 20 minutes\n"+"take out to cool",R.drawable.waffles));
-        recipeById.put("pancakes3", new FoodItem("Pancakes3", "Pancakes", "Dessert", "yummy ice cream", "salt\n"+"pepper\n"+"egg", "put in over for 20 minutes\n"+"take out to cool",R.drawable.pancakes));
-        recipeById.put("pancakes4", new FoodItem("Pancakes4", "Pancakes", "Dessert", "yummy ice cream", "salt\n"+"pepper\n"+"egg", "put in over for 20 minutes\n"+"take out to cool",R.drawable.pancakes));
+        for (FoodItem i : breakfastList) {
+            recipeById.put(i.getuId(), i);
+        }
+        for (FoodItem i : lunchList) {
+            recipeById.put(i.getuId(), i);
+        }
+        for (FoodItem i : dinnerList) {
+            recipeById.put(i.getuId(), i);
+        }
+        for (FoodItem i : dessertList) {
+            recipeById.put(i.getuId(), i);
+        }
+        for (FoodItem i : appetizerList) {
+            recipeById.put(i.getuId(), i);
+        }
+        for (FoodItem i : snackList) {
+            recipeById.put(i.getuId(), i);
+        }
     }
 }

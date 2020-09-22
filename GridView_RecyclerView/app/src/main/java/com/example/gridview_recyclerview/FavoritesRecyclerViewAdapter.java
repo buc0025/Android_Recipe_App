@@ -43,8 +43,9 @@ public class FavoritesRecyclerViewAdapter extends RecyclerView.Adapter<Favorites
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
 
-        holder.tv_book_title.setText(recipeData.get(position).getTitle());
-        holder.img_book_thumbnail.setImageResource(recipeData.get(position).getThumbnail());
+        holder.tvBookTitle.setText(recipeData.get(position).getTitle());
+        holder.imgBookThumbnail.setImageResource(recipeData.get(position).getThumbnail());
+        final FoodItem recipePosition = recipeData.get(position);
 
         //*******Set onclick Listener***********
         holder.cardView.setOnClickListener(new View.OnClickListener() {
@@ -54,20 +55,17 @@ public class FavoritesRecyclerViewAdapter extends RecyclerView.Adapter<Favorites
                 Intent intent = new Intent(context, RecipeDetails.class);
 
                 //***************Passing data to the book activity**********
-                intent.putExtra("ID", recipeData.get(position).getTitle());
-                intent.putExtra("Title", recipeData.get(position).getTitle());
-                intent.putExtra("Category", recipeData.get(position).getCategory());
-                intent.putExtra("Description", recipeData.get(position).getDescription());
-                intent.putExtra("Ingredients", recipeData.get(position).getIngredients());
-                intent.putExtra("Directions", recipeData.get(position).getDirections());
-                intent.putExtra("Thumbnail", recipeData.get(position).getThumbnail());
+                intent.putExtra("ID", recipePosition.getTitle());
+                intent.putExtra("Title", recipePosition.getTitle());
+                intent.putExtra("Category", recipePosition.getCategory());
+                intent.putExtra("Description", recipePosition.getDescription());
+                intent.putExtra("Ingredients", recipePosition.getIngredients());
+                intent.putExtra("Directions", recipePosition.getDirections());
+                intent.putExtra("Thumbnail", recipePosition.getThumbnail());
                 //******start the activity**************
                 context.startActivity(intent);
-
             }
         });
-
-
     }
 
     @Override
@@ -77,16 +75,15 @@ public class FavoritesRecyclerViewAdapter extends RecyclerView.Adapter<Favorites
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
 
-        TextView tv_book_title;
-        ImageView img_book_thumbnail;
+        TextView tvBookTitle;
+        ImageView imgBookThumbnail;
         CardView cardView;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            tv_book_title = (TextView) itemView.findViewById(R.id.book_title_id);
-            img_book_thumbnail = (ImageView) itemView.findViewById(R.id.book_img_id);
-            cardView = (CardView) itemView.findViewById(R.id.cardView_id);
-
+            tvBookTitle = (TextView) itemView.findViewById(R.id.bookTitleId);
+            imgBookThumbnail = (ImageView) itemView.findViewById(R.id.bookImgId);
+            cardView = (CardView) itemView.findViewById(R.id.cardViewId);
         }
     }
 
@@ -121,7 +118,6 @@ public class FavoritesRecyclerViewAdapter extends RecyclerView.Adapter<Favorites
             recipeData.clear();
             recipeData.addAll((List) results.values);
             notifyDataSetChanged();
-
         }
     };
 }

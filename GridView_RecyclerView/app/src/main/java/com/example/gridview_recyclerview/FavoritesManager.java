@@ -3,7 +3,9 @@ package com.example.gridview_recyclerview;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -16,14 +18,15 @@ public class FavoritesManager {
         sharedPreferences = context.getSharedPreferences(RECIPE_SHARED_PREFS, Context.MODE_PRIVATE);
     }
 
-    public Set<FoodItem> getFavorites() { //to do: return all food items
+    public List<FoodItem> getFavorites() { //to do: return all food items
 
-        Set<FoodItem> foodItems = new HashSet<>();
+        List<FoodItem> foodItems = new ArrayList<>();
 
         for (String entry : sharedPreferences.getAll().keySet()) {
-            foodItems.add(RecipeManager.recipeById.get(entry));
+            if (entry != null) {
+                foodItems.add(RecipeManager.recipeById.get(entry));
+            }
         }
-
         return foodItems;
     }
 

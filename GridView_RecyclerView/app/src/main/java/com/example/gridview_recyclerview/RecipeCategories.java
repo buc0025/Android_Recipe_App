@@ -19,7 +19,7 @@ public class RecipeCategories extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recipe_categories_page);
 
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview_id);
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerviewId);
         recyclerViewAdapter = new RecipeCategoriesRecyclerViewAdapter(this, RecipeManager.mainPageFoodCategories);
         recyclerView.setLayoutManager(new GridLayoutManager(this,3));
         recyclerView.setAdapter(recyclerViewAdapter);
@@ -35,7 +35,7 @@ public class RecipeCategories extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
-        if (id == R.id.favorites_toolBar) {
+        if (id == R.id.favoritesToolBar) {
             Intent intent = new Intent(RecipeCategories.this, Favorites.class);
             startActivity(intent);
         }
