@@ -45,12 +45,20 @@
                 android:padding="8dp"
                 android:layout_marginTop="10dp"/>
 
-            <Button
-                android:id="@+id/favBtn"
-                android:layout_marginTop="10dp"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                 android:background="@drawable/ic_favorite_shadow"/>
+<!--            <Button-->
+<!--                android:id="@+id/favBtn"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:layout_width="30dp"-->
+<!--                android:layout_height="30dp"-->
+<!--                 android:background="@drawable/ic_favorite_shadow"/>-->
+
+            <Switch
+                android:id="@+id/favSwitch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Favorite  "
+                android:textSize="20sp"
+                android:textColor="#FFFFFF"/>
 
             <TextView
                 android:id="@+id/txtDescription"
