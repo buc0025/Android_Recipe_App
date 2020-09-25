@@ -52,13 +52,19 @@
 <!--                android:layout_height="30dp"-->
 <!--                 android:background="@drawable/ic_favorite_shadow"/>-->
 
-            <Switch
-                android:id="@+id/favSwitch"
-                android:layout_width="wrap_content"
+<!--            <Switch-->
+<!--                android:id="@+id/favSwitch"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Favorite  "-->
+<!--                android:textSize="20sp"-->
+<!--                android:textColor="#FFFFFF"/>-->
+            <ToggleButton
+                android:id="@+id/favBtn"
+                android:layout_marginTop="10dp"
+                android:layout_width="50dp"
                 android:layout_height="wrap_content"
-                android:text="Favorite  "
-                android:textSize="20sp"
-                android:textColor="#FFFFFF"/>
+                android:background="@drawable/custom_button"/>
 
             <TextView
                 android:id="@+id/txtDescription"
