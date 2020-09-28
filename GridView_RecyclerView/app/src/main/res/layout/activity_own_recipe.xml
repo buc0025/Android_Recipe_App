@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RecipeDetails"
+    tools:context=".OwnRecipe"
     android:background="#095866">
 
     <androidx.core.widget.NestedScrollView
@@ -18,16 +18,16 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:orientation="vertical">
-            
+
             <ImageView
                 android:layout_width="200dp"
                 android:layout_height="250dp"
-                android:background="#2d2d2d"
-                android:id="@+id/bookThumbnail"
+                android:background="@drawable/retro_paper"
+                android:id="@+id/ownThumbnail"
                 android:scaleType="centerCrop"/>
 
             <TextView
-                android:id="@+id/txtTitle"
+                android:id="@+id/ownTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Recipe Title"
@@ -37,53 +37,25 @@
                 android:textColor="#FFFFFF"/>
 
             <TextView
-                android:id="@+id/txtCategory"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Category"
-                android:background="#edecec"
-                android:padding="8dp"
-                android:layout_marginTop="10dp"/>
-
-<!--            <Button-->
-<!--                android:id="@+id/favBtn"-->
-<!--                android:layout_marginTop="10dp"-->
-<!--                android:layout_width="30dp"-->
-<!--                android:layout_height="30dp"-->
-<!--                 android:background="@drawable/ic_favorite_shadow"/>-->
-
-<!--            <Switch-->
-<!--                android:id="@+id/favSwitch"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="Favorite  "-->
-<!--                android:textSize="20sp"-->
-<!--                android:textColor="#FFFFFF"/>-->
-            <ToggleButton
-                android:id="@+id/favBtn"
-                android:layout_marginTop="10dp"
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/custom_button"/>
-
-            <TextView
-                android:id="@+id/txtDescription"
+                android:id="@+id/ownDescription"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="Description"
                 android:textColor="#FFFFFF"
                 android:textSize="18sp" />
+
             <TextView
-                android:id="@+id/txtIngredients"
+                android:id="@+id/ownIngredients"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="Ingredients"
                 android:textColor="#FFFFFF"
                 android:textSize="18sp"/>
+
             <TextView
-                android:id="@+id/txtDirections"
+                android:id="@+id/ownDirections"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -91,7 +63,6 @@
                 android:textColor="#FFFFFF"
                 android:textSize="18sp"/>
 
-            
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 

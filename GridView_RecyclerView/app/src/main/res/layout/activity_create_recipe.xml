@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/blackboard_menu_no_title"
+    android:orientation="vertical"
+    tools:context=".CreateRecipe">
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:padding="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/ownRecipeTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="@color/cardview_light_background"
+                android:ems="10"
+                android:hint="Enter Recipe Title"
+                android:inputType="textPersonName"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#FFFFFF" />
+
+            <EditText
+                android:id="@+id/ownRecipeDescription"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="10dp"
+                android:ems="10"
+                android:hint="Enter Recipe Description"
+                android:inputType="textMultiLine"
+                android:backgroundTint="@color/cardview_light_background"
+                android:textColorHint="#FFFFFF"
+                android:textColor="#FFFFFF"/>
+
+            <EditText
+                android:id="@+id/ownRecipeIngredients"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="10dp"
+                android:ems="10"
+                android:hint="Enter Recipe Ingredients"
+                android:inputType="textMultiLine"
+                android:backgroundTint="@color/cardview_light_background"
+                android:textColorHint="#FFFFFF"
+                android:textColor="#FFFFFF"/>
+
+            <EditText
+                android:id="@+id/ownRecipeDirections"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="10dp"
+                android:ems="10"
+                android:hint="Enter Recipe Directions"
+                android:inputType="textMultiLine"
+                android:backgroundTint="@color/cardview_light_background"
+                android:textColorHint="#FFFFFF"
+                android:textColor="#FFFFFF"/>
+
+
+            <Button
+                android:id="@+id/createRecipeBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:text="Create Recipe!" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+
+</LinearLayout>

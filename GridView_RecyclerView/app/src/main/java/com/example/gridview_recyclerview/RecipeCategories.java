@@ -39,6 +39,10 @@ public class RecipeCategories extends AppCompatActivity {
             Intent intent = new Intent(RecipeCategories.this, Favorites.class);
             startActivity(intent);
         }
+        if (id == R.id.addRecipe) {
+            Intent intent = new Intent(RecipeCategories.this, CreateRecipe.class);
+            startActivity(intent);
+        }
         return super.onOptionsItemSelected(item);
     }
 }

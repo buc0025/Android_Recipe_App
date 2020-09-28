@@ -18,7 +18,6 @@ public class RecipeDetails extends AppCompatActivity {
 
     private TextView recipeName, recipeDescription, recipeCategory, recipeIngredients, recipeDirections;
     private ImageView recipeImage;
-    private Button favBtn;
     private Switch favSwitch;
 
     @Override
@@ -32,7 +31,6 @@ public class RecipeDetails extends AppCompatActivity {
         recipeImage = (ImageView) findViewById(R.id.bookThumbnail);
         recipeIngredients = (TextView) findViewById(R.id.txtIngredients);
         recipeDirections = (TextView) findViewById(R.id.txtDirections);
-//        favBtn = findViewById(R.id.favBtn);
 //        favSwitch = findViewById(R.id.favSwitch);
 
         //***********Receive data*************
@@ -46,24 +44,20 @@ public class RecipeDetails extends AppCompatActivity {
         final int image = intent.getExtras().getInt("Thumbnail");
 
         final ToggleButton favBtn = findViewById(R.id.favBtn);
-        FavoritesManager favoritesManager = new FavoritesManager(RecipeDetails.this);
-        FoodItem foodItem = new FoodItem(id, title, category, description, ingredients, directions, image);
-        favBtn.setChecked(favoritesManager.isFavorited(foodItem));
+        final FavoritesManager favoritesManager = new FavoritesManager(RecipeDetails.this);
+        final FoodItem foodItem = new FoodItem(id, title, category, description, ingredients, directions, image);
+        favBtn.setChecked(favoritesManager.isFavorited(foodItem.getuId()));
 
         favBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (favBtn.isChecked()) {
                     Toast.makeText(RecipeDetails.this, "Recipe favorited", Toast.LENGTH_SHORT).show();
-                    FoodItem foodItem = new FoodItem(id, title, category, description, ingredients, directions, image);
-                    FavoritesManager favoritesManager = new FavoritesManager(RecipeDetails.this);
-                    favoritesManager.saveFavorites(foodItem);
+                    favoritesManager.saveFavorites(foodItem.getuId());
                     favBtn.setChecked(true);
                 } else {
                     Toast.makeText(RecipeDetails.this, "Recipe unfavorited", Toast.LENGTH_SHORT).show();
-                    FoodItem foodItem = new FoodItem(id, title, category, description, ingredients, directions, image);
-                    FavoritesManager favoritesManager = new FavoritesManager(RecipeDetails.this);
-                    favoritesManager.removeFavorites(foodItem);
+                    favoritesManager.removeFavorites(foodItem.getuId());
                     favBtn.setChecked(false);
                 }
             }
@@ -71,8 +65,6 @@ public class RecipeDetails extends AppCompatActivity {
 
         //*********************If a switch is decided to be used to add and remove favorites*****************************
 
-//        FavoritesManager favoritesManager = new FavoritesManager(RecipeDetails.this);
-//        FoodItem foodItem = new FoodItem(id,title,category,description,ingredients,directions,image);
 //        favSwitch.setChecked(favoritesManager.isFavorited(foodItem));
 //
 //        favSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -80,14 +72,10 @@ public class RecipeDetails extends AppCompatActivity {
 //            public void onCheckedChanged(CompoundButton compoundButton, boolean changed) {
 //                if (changed) {
 //                    Toast.makeText(RecipeDetails.this, "Saved to favorites", Toast.LENGTH_SHORT).show();
-//                    FoodItem foodItem = new FoodItem(id, title, category, description, ingredients, directions, image);
-//                    FavoritesManager favoritesManager = new FavoritesManager(RecipeDetails.this);
 //                    favoritesManager.saveFavorites(foodItem);
 //                    favSwitch.setChecked(true);
 //                } else {
 //                    Toast.makeText(RecipeDetails.this, "Remove from favorites", Toast.LENGTH_SHORT).show();
-//                    FoodItem foodItem = new FoodItem(id, title, category, description, ingredients, directions, image);
-//                    FavoritesManager favoritesManager = new FavoritesManager(RecipeDetails.this);
 //                    favoritesManager.removeFavorites(foodItem);
 //                    favSwitch.setChecked(false);
 //                }

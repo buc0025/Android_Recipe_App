@@ -30,19 +30,19 @@ public class FavoritesManager {
         return foodItems;
     }
 
-    public void saveFavorites(FoodItem foodItem) {
+    public void saveFavorites(String uId) {
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString(foodItem.getuId(), "");
+        editor.putString(uId, "");
         editor.apply();
     }
 
-    public void removeFavorites(FoodItem foodItem) {
+    public void removeFavorites(String uId) {
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.remove(foodItem.getuId());
+        editor.remove(uId);
         editor.apply();
     }
 
-    public boolean isFavorited(FoodItem foodItem) {
-        return sharedPreferences.contains(foodItem.getuId());
+    public boolean isFavorited(String uId) {
+        return sharedPreferences.contains(uId);
     }
 }
