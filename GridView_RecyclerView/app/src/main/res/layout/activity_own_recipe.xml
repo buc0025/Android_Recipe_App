@@ -37,6 +37,15 @@
                 android:textColor="#FFFFFF"/>
 
             <TextView
+                android:id="@+id/ownCategory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Category"
+                android:background="#edecec"
+                android:padding="8dp"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
                 android:id="@+id/ownDescription"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

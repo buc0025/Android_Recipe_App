@@ -3,7 +3,6 @@ package com.example.gridview_recyclerview;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Bundle;
 
 public class Favorites extends AppCompatActivity {

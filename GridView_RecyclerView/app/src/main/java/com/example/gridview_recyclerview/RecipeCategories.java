@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -20,7 +19,7 @@ public class RecipeCategories extends AppCompatActivity {
         setContentView(R.layout.recipe_categories_page);
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerviewId);
-        recyclerViewAdapter = new RecipeCategoriesRecyclerViewAdapter(this, RecipeManager.mainPageFoodCategories);
+        recyclerViewAdapter = new RecipeCategoriesRecyclerViewAdapter(this, PredefinedRecipeManager.mainPageFoodCategories);
         recyclerView.setLayoutManager(new GridLayoutManager(this,3));
         recyclerView.setAdapter(recyclerViewAdapter);
     }
@@ -41,6 +40,10 @@ public class RecipeCategories extends AppCompatActivity {
         }
         if (id == R.id.addRecipe) {
             Intent intent = new Intent(RecipeCategories.this, CreateRecipe.class);
+            startActivity(intent);
+        }
+        if (id == R.id.ownRecipe) {
+            Intent intent = new Intent(RecipeCategories.this, CustomRecipesList.class);
             startActivity(intent);
         }
         return super.onOptionsItemSelected(item);

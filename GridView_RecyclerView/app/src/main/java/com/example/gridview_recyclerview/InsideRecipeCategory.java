@@ -4,13 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,12 +24,12 @@ public class InsideRecipeCategory extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.inside_recipe_category);
 
-        categoriesMap.put("Breakfast", RecipeManager.breakfastList);
-        categoriesMap.put("Lunch", RecipeManager.lunchList);
-        categoriesMap.put("Dinner", RecipeManager.dinnerList);
-        categoriesMap.put("Appetizer", RecipeManager.appetizerList);
-        categoriesMap.put("Dessert", RecipeManager.dessertList);
-        categoriesMap.put("Snacks", RecipeManager.snackList);
+        categoriesMap.put("Breakfast", PredefinedRecipeManager.breakfastList);
+        categoriesMap.put("Lunch", PredefinedRecipeManager.lunchList);
+        categoriesMap.put("Dinner", PredefinedRecipeManager.dinnerList);
+        categoriesMap.put("Appetizer", PredefinedRecipeManager.appetizerList);
+        categoriesMap.put("Dessert", PredefinedRecipeManager.dessertList);
+        categoriesMap.put("Snacks", PredefinedRecipeManager.snackList);
 
         Intent intent = getIntent();
         String category = intent.getExtras().getString("meal_type");

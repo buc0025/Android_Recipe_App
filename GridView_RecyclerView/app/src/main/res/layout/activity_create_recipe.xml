@@ -34,6 +34,21 @@
                 android:textColorHint="#FFFFFF" />
 
             <EditText
+                android:id="@+id/ownRecipeCategory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="10dp"
+                android:ems="10"
+                android:hint="Enter Recipe Category"
+                android:inputType="textPersonName"
+                android:backgroundTint="@color/cardview_light_background"
+                android:textColorHint="#FFFFFF"
+                android:textColor="#FFFFFF"
+                />
+
+            <EditText
                 android:id="@+id/ownRecipeDescription"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"

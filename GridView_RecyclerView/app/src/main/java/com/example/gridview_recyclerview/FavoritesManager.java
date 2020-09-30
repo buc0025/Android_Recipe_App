@@ -2,12 +2,8 @@ package com.example.gridview_recyclerview;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 public class FavoritesManager {
 
@@ -24,7 +20,7 @@ public class FavoritesManager {
 
         for (String entry : sharedPreferences.getAll().keySet()) {
             if (entry != null) {
-                foodItems.add(RecipeManager.recipeById.get(entry));
+                foodItems.add(PredefinedRecipeManager.recipeById.get(entry));
             }
         }
         return foodItems;

@@ -9,11 +9,9 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,7 +52,7 @@ public class FavoritesRecyclerViewAdapter extends RecyclerView.Adapter<Favorites
 
                 Intent intent = new Intent(context, RecipeDetails.class);
 
-                //***************Passing data to the book activity**********
+                //***************Passing data to the RecipeDetails activity**********
                 intent.putExtra("ID", recipePosition.getTitle());
                 intent.putExtra("Title", recipePosition.getTitle());
                 intent.putExtra("Category", recipePosition.getCategory());

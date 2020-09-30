@@ -8,8 +8,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".OwnRecipe"
-            android:label="Recipe"/>
+        <activity android:name=".CustomRecipesList"
+            android:label="Recipes"></activity>
+        <activity
+            android:name=".OwnRecipe"
+            android:label="Recipe" />
         <activity
             android:name=".CreateRecipe"
             android:label="Create Recipe" />
