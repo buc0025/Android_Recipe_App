@@ -26,8 +26,11 @@ public class CreateRecipe extends AppCompatActivity {
                 EditText ownRecipeDirections = findViewById(R.id.ownRecipeDirections);
 
                 CustomRecipeManager customRecipeManager = new CustomRecipeManager(CreateRecipe.this);
-                final CustomRecipe customRecipe = new CustomRecipe(ownRecipeTitle.getText().toString(), ownRecipeCategory.getText().toString(), ownRecipeDescription.getText().toString(),
-                        ownRecipeIngredients.getText().toString(), ownRecipeDirections.getText().toString());
+                final CustomRecipe customRecipe = new CustomRecipe(ownRecipeTitle.getText().toString(),
+                        ownRecipeCategory.getText().toString(),
+                        ownRecipeDescription.getText().toString(),
+                        ownRecipeIngredients.getText().toString(),
+                        ownRecipeDirections.getText().toString());
 
                 customRecipeManager.saveRecipe(customRecipe);
 

@@ -20,13 +20,13 @@ import java.util.List;
 public class CustomRecipeRecyclerViewAdapter extends RecyclerView.Adapter<CustomRecipeRecyclerViewAdapter.MyViewHolder> implements Filterable {
 
     private Context context;
-    private List<CustomRecipe> recipeData;
-    private List<CustomRecipe> recipeDataSearch;
+    private List<CustomRecipe> customRecipes;
+    private List<CustomRecipe> customRecipeSearch;
 
-    public CustomRecipeRecyclerViewAdapter(Context context, List<CustomRecipe> recipeData) {
+    public CustomRecipeRecyclerViewAdapter(Context context, List<CustomRecipe> customRecipes) {
         this.context = context;
-        this.recipeData = recipeData;
-        recipeDataSearch = new ArrayList<>(recipeData);
+        this.customRecipes = customRecipes;
+        customRecipeSearch = new ArrayList<>(customRecipes);
     }
 
     @NonNull
@@ -43,9 +43,9 @@ public class CustomRecipeRecyclerViewAdapter extends RecyclerView.Adapter<Custom
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
 
-        holder.tvBookTitle.setText(recipeData.get(position).getTitle());
+        holder.tvBookTitle.setText(customRecipes.get(position).getTitle());
 //        holder.imgBookThumbnail.setImageResource(recipeData.get(position).getThumbnail());
-        final CustomRecipe recipePosition = recipeData.get(position);
+        final CustomRecipe recipePosition = customRecipes.get(position);
 
         //*******Set onclick Listener***********
         holder.cardView.setOnClickListener(new View.OnClickListener() {
@@ -69,7 +69,7 @@ public class CustomRecipeRecyclerViewAdapter extends RecyclerView.Adapter<Custom
 
     @Override
     public int getItemCount() {
-        return recipeData.size();
+        return customRecipes.size();
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
@@ -96,11 +96,11 @@ public class CustomRecipeRecyclerViewAdapter extends RecyclerView.Adapter<Custom
             List<CustomRecipe> filteredList = new ArrayList<>();
 
             if (constraint == null || constraint.length() == 0) {
-                filteredList.addAll(recipeDataSearch);
+                filteredList.addAll(customRecipeSearch);
             } else {
                 String filterPattern = constraint.toString().toLowerCase().trim();
 
-                for (CustomRecipe item : recipeDataSearch) {
+                for (CustomRecipe item : customRecipeSearch) {
                     if (item.getTitle().toLowerCase().contains(filterPattern)) {
                         filteredList.add(item);
                     }
@@ -114,8 +114,8 @@ public class CustomRecipeRecyclerViewAdapter extends RecyclerView.Adapter<Custom
 
         @Override
         protected void publishResults(CharSequence constraint, FilterResults results) {
-            recipeData.clear();
-            recipeData.addAll((List) results.values);
+            customRecipes.clear();
+            customRecipes.addAll((List) results.values);
             notifyDataSetChanged();
         }
     };

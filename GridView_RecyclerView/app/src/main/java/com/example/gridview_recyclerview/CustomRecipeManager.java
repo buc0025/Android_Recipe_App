@@ -12,28 +12,20 @@ import java.util.List;
 
 public class CustomRecipeManager {
 
-    final private static String CUSTOM_SHARED_PREFS = "custom shared prefs";
+    final private static String CUSTOM_RECIPES_SHARED_PREFS = "CUSTOM_RECIPES_SHARED_PREFS";
     private SharedPreferences sharedPreferences;
 
     public CustomRecipeManager(Context context) {
-        sharedPreferences = context.getSharedPreferences(CUSTOM_SHARED_PREFS, Context.MODE_PRIVATE);
+        sharedPreferences = context.getSharedPreferences(CUSTOM_RECIPES_SHARED_PREFS, Context.MODE_PRIVATE);
     }
 
     public void saveRecipe(CustomRecipe item) {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         Gson gson = new Gson();
-        String json = gson.toJson(CreateRecipe.class);
+        String json = gson.toJson(item);
         editor.putString("custom list", json);
         editor.commit();
     }
-
-    public void loadRecipe() {
-        Gson gson = new Gson();
-        String json = sharedPreferences.getString("custom list", null);
-        Type type = new TypeToken<List<CustomRecipe>>() {}.getType();
-
-    }
-
 
     public List<CustomRecipe> getRecipes() {
 
@@ -44,6 +36,10 @@ public class CustomRecipeManager {
 //                customRecipes.add();
 //            }
 //        }
+        Gson gson = new Gson();
+        String json = sharedPreferences.getString("custom list", null);
+        CustomRecipe obj = gson.fromJson(json, CustomRecipe.class);
+        customRecipes.add(obj);
         return customRecipes;
     }
 }

@@ -7,7 +7,8 @@ import android.os.Bundle;
 
 public class Favorites extends AppCompatActivity {
 
-    private FavoritesRecyclerViewAdapter recyclerViewAdapter3;
+    private FavoritesRecyclerViewAdapter favoritesRecyclerViewAdapter;
+    final int gridLayoutWidth = 3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,9 +16,9 @@ public class Favorites extends AppCompatActivity {
         setContentView(R.layout.activity_favorites);
 
         FavoritesManager favoritesManager = new FavoritesManager(Favorites.this);
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview3Id);
-        recyclerViewAdapter3 = new FavoritesRecyclerViewAdapter(this, favoritesManager.getFavorites());
-        recyclerView.setLayoutManager(new GridLayoutManager(this,3));
-        recyclerView.setAdapter(recyclerViewAdapter3);
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.favoritesRecyclerViewId);
+        favoritesRecyclerViewAdapter = new FavoritesRecyclerViewAdapter(this, favoritesManager.getFavorites());
+        recyclerView.setLayoutManager(new GridLayoutManager(this, gridLayoutWidth));
+        recyclerView.setAdapter(favoritesRecyclerViewAdapter);
     }
 }

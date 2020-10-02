@@ -8,7 +8,8 @@ import android.os.Bundle;
 
 public class CustomRecipesList extends AppCompatActivity {
 
-    private CustomRecipeRecyclerViewAdapter recyclerViewAdapter4;
+    private CustomRecipeRecyclerViewAdapter customRecipeRecyclerViewAdapter;
+    final int gridLayoutWidth = 3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,9 +17,9 @@ public class CustomRecipesList extends AppCompatActivity {
         setContentView(R.layout.activity_custom_recipes_list);
 
         CustomRecipeManager customRecipeManager = new CustomRecipeManager(CustomRecipesList.this);
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview4Id);
-        recyclerViewAdapter4 = new CustomRecipeRecyclerViewAdapter(this, customRecipeManager.getRecipes());
-        recyclerView.setLayoutManager(new GridLayoutManager(this, 3));
-        recyclerView.setAdapter(recyclerViewAdapter4);
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.customRecipeRecyclerViewId);
+        customRecipeRecyclerViewAdapter = new CustomRecipeRecyclerViewAdapter(this, customRecipeManager.getRecipes());
+        recyclerView.setLayoutManager(new GridLayoutManager(this, gridLayoutWidth));
+        recyclerView.setAdapter(customRecipeRecyclerViewAdapter);
     }
 }

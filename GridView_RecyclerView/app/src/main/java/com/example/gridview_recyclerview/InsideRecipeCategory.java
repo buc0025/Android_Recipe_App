@@ -15,7 +15,8 @@ import java.util.Map;
 
 public class InsideRecipeCategory extends AppCompatActivity {
 
-    private InsideRecipeCategoryRecyclerViewAdapter recyclerViewAdapter2;
+    private InsideRecipeCategoryRecyclerViewAdapter insideRecipeCategoryRecyclerViewAdapter;
+    final int gridLayoutWidth = 3;
 
     Map<String, List<FoodItem>> categoriesMap = new HashMap<>();
 
@@ -34,10 +35,10 @@ public class InsideRecipeCategory extends AppCompatActivity {
         Intent intent = getIntent();
         String category = intent.getExtras().getString("meal_type");
 
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview2Id);
-        recyclerViewAdapter2 = new InsideRecipeCategoryRecyclerViewAdapter(this, categoriesMap.get(category));
-        recyclerView.setLayoutManager(new GridLayoutManager(this,3));
-        recyclerView.setAdapter(recyclerViewAdapter2);
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.insideCategoryRecyclerViewId);
+        insideRecipeCategoryRecyclerViewAdapter = new InsideRecipeCategoryRecyclerViewAdapter(this, categoriesMap.get(category));
+        recyclerView.setLayoutManager(new GridLayoutManager(this, gridLayoutWidth));
+        recyclerView.setAdapter(insideRecipeCategoryRecyclerViewAdapter);
     }
 
     @Override
@@ -56,7 +57,7 @@ public class InsideRecipeCategory extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                recyclerViewAdapter2.getFilter().filter(newText);
+                insideRecipeCategoryRecyclerViewAdapter.getFilter().filter(newText);
                 return false;
             }
         });

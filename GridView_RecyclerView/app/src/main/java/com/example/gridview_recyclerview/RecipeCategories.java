@@ -11,17 +11,18 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 public class RecipeCategories extends AppCompatActivity {
-    private RecipeCategoriesRecyclerViewAdapter recyclerViewAdapter;
+    private RecipeCategoriesRecyclerViewAdapter recipeCategoriesRecyclerViewAdapter;
+    final int gridLayoutWidth = 3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recipe_categories_page);
 
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerviewId);
-        recyclerViewAdapter = new RecipeCategoriesRecyclerViewAdapter(this, PredefinedRecipeManager.mainPageFoodCategories);
-        recyclerView.setLayoutManager(new GridLayoutManager(this,3));
-        recyclerView.setAdapter(recyclerViewAdapter);
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.categoryRecyclerViewId);
+        recipeCategoriesRecyclerViewAdapter = new RecipeCategoriesRecyclerViewAdapter(this, PredefinedRecipeManager.mainPageFoodCategories);
+        recyclerView.setLayoutManager(new GridLayoutManager(this, gridLayoutWidth));
+        recyclerView.setAdapter(recipeCategoriesRecyclerViewAdapter);
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
