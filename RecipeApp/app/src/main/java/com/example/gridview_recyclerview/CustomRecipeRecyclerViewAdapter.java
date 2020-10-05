@@ -9,22 +9,24 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class FavoritesRecyclerViewAdapter extends RecyclerView.Adapter<FavoritesRecyclerViewAdapter.MyViewHolder> implements Filterable {
+public class CustomRecipeRecyclerViewAdapter extends RecyclerView.Adapter<CustomRecipeRecyclerViewAdapter.MyViewHolder> implements Filterable {
 
     private Context context;
-    private List<FoodItem> recipeData;
-    private List<FoodItem> recipeDataSearch;
+    private List<CustomRecipe> customRecipes;
+    private List<CustomRecipe> customRecipeSearch;
 
-    public FavoritesRecyclerViewAdapter(Context context, List<FoodItem> recipeData) {
+    public CustomRecipeRecyclerViewAdapter(Context context, List<CustomRecipe> customRecipes) {
         this.context = context;
-        this.recipeData = recipeData;
-        recipeDataSearch = new ArrayList<>(recipeData);
+        this.customRecipes = customRecipes;
+        customRecipeSearch = new ArrayList<>(customRecipes);
     }
 
     @NonNull
@@ -41,25 +43,25 @@ public class FavoritesRecyclerViewAdapter extends RecyclerView.Adapter<Favorites
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
 
-        holder.tvBookTitle.setText(recipeData.get(position).getTitle());
-        holder.imgBookThumbnail.setImageResource(recipeData.get(position).getThumbnail());
-        final FoodItem recipePosition = recipeData.get(position);
+        holder.tvBookTitle.setText(customRecipes.get(position).getTitle());
+//        holder.imgBookThumbnail.setImageResource(recipeData.get(position).getThumbnail());
+        holder.imgBookThumbnail.setImageResource(R.drawable.stock_food_pic);
+        final CustomRecipe recipePosition = customRecipes.get(position);
 
         //*******Set onclick Listener***********
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(context, RecipeDetails.class);
+                Intent intent = new Intent(context, OwnRecipe.class);
 
-                //***************Passing data to the RecipeDetails activity**********
-                intent.putExtra("ID", recipePosition.getTitle());
-                intent.putExtra("Title", recipePosition.getTitle());
-                intent.putExtra("Category", recipePosition.getCategory());
-                intent.putExtra("Description", recipePosition.getDescription());
-                intent.putExtra("Ingredients", recipePosition.getIngredients());
-                intent.putExtra("Directions", recipePosition.getDirections());
-                intent.putExtra("Thumbnail", recipePosition.getThumbnail());
+                //***************Passing data to the OwnRecipe activity**********
+                intent.putExtra("Custom Title", recipePosition.getTitle());
+                intent.putExtra("Custom Category", recipePosition.getCategory());
+                intent.putExtra("Custom Description", recipePosition.getDescription());
+                intent.putExtra("Custom Ingredients", recipePosition.getIngredients());
+                intent.putExtra("Custom Directions", recipePosition.getDirections());
+
                 //******start the activity**************
                 context.startActivity(intent);
             }
@@ -68,7 +70,7 @@ public class FavoritesRecyclerViewAdapter extends RecyclerView.Adapter<Favorites
 
     @Override
     public int getItemCount() {
-        return recipeData.size();
+        return customRecipes.size();
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
@@ -92,14 +94,14 @@ public class FavoritesRecyclerViewAdapter extends RecyclerView.Adapter<Favorites
     private Filter exampleFilter = new Filter() {
         @Override
         protected FilterResults performFiltering(CharSequence constraint) {
-            List<FoodItem> filteredList = new ArrayList<>();
+            List<CustomRecipe> filteredList = new ArrayList<>();
 
             if (constraint == null || constraint.length() == 0) {
-                filteredList.addAll(recipeDataSearch);
+                filteredList.addAll(customRecipeSearch);
             } else {
                 String filterPattern = constraint.toString().toLowerCase().trim();
 
-                for (FoodItem item : recipeDataSearch) {
+                for (CustomRecipe item : customRecipeSearch) {
                     if (item.getTitle().toLowerCase().contains(filterPattern)) {
                         filteredList.add(item);
                     }
@@ -113,10 +115,9 @@ public class FavoritesRecyclerViewAdapter extends RecyclerView.Adapter<Favorites
 
         @Override
         protected void publishResults(CharSequence constraint, FilterResults results) {
-            recipeData.clear();
-            recipeData.addAll((List) results.values);
+            customRecipes.clear();
+            customRecipes.addAll((List) results.values);
             notifyDataSetChanged();
         }
     };
 }
-

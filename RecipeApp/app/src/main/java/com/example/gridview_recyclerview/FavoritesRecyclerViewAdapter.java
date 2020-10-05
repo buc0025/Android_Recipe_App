@@ -9,24 +9,22 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.ArrayList;
 import java.util.List;
 
-public class CustomRecipeRecyclerViewAdapter extends RecyclerView.Adapter<CustomRecipeRecyclerViewAdapter.MyViewHolder> implements Filterable {
+public class FavoritesRecyclerViewAdapter extends RecyclerView.Adapter<FavoritesRecyclerViewAdapter.MyViewHolder> implements Filterable {
 
     private Context context;
-    private List<CustomRecipe> customRecipes;
-    private List<CustomRecipe> customRecipeSearch;
+    private List<Recipe> recipeData;
+    private List<Recipe> recipeDataSearch;
 
-    public CustomRecipeRecyclerViewAdapter(Context context, List<CustomRecipe> customRecipes) {
+    public FavoritesRecyclerViewAdapter(Context context, List<Recipe> recipeData) {
         this.context = context;
-        this.customRecipes = customRecipes;
-        customRecipeSearch = new ArrayList<>(customRecipes);
+        this.recipeData = recipeData;
+        recipeDataSearch = new ArrayList<>(recipeData);
     }
 
     @NonNull
@@ -43,24 +41,25 @@ public class CustomRecipeRecyclerViewAdapter extends RecyclerView.Adapter<Custom
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
 
-        holder.tvBookTitle.setText(customRecipes.get(position).getTitle());
-//        holder.imgBookThumbnail.setImageResource(recipeData.get(position).getThumbnail());
-        final CustomRecipe recipePosition = customRecipes.get(position);
+        holder.tvBookTitle.setText(recipeData.get(position).getTitle());
+        holder.imgBookThumbnail.setImageResource(recipeData.get(position).getThumbnail());
+        final Recipe recipePosition = recipeData.get(position);
 
         //*******Set onclick Listener***********
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(context, OwnRecipe.class);
+                Intent intent = new Intent(context, RecipeDetails.class);
 
-                //***************Passing data to the OwnRecipe activity**********
-                intent.putExtra("Custom Title", recipePosition.getTitle());
-                intent.putExtra("Custom Category", recipePosition.getCategory());
-                intent.putExtra("Custom Description", recipePosition.getDescription());
-                intent.putExtra("Custom Ingredients", recipePosition.getIngredients());
-                intent.putExtra("Custom Directions", recipePosition.getDirections());
-
+                //***************Passing data to the RecipeDetails activity**********
+                intent.putExtra("ID", recipePosition.getTitle());
+                intent.putExtra("Title", recipePosition.getTitle());
+                intent.putExtra("Category", recipePosition.getCategory());
+                intent.putExtra("Description", recipePosition.getDescription());
+                intent.putExtra("Ingredients", recipePosition.getIngredients());
+                intent.putExtra("Directions", recipePosition.getDirections());
+                intent.putExtra("Thumbnail", recipePosition.getThumbnail());
                 //******start the activity**************
                 context.startActivity(intent);
             }
@@ -69,7 +68,7 @@ public class CustomRecipeRecyclerViewAdapter extends RecyclerView.Adapter<Custom
 
     @Override
     public int getItemCount() {
-        return customRecipes.size();
+        return recipeData.size();
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
@@ -93,14 +92,14 @@ public class CustomRecipeRecyclerViewAdapter extends RecyclerView.Adapter<Custom
     private Filter exampleFilter = new Filter() {
         @Override
         protected FilterResults performFiltering(CharSequence constraint) {
-            List<CustomRecipe> filteredList = new ArrayList<>();
+            List<Recipe> filteredList = new ArrayList<>();
 
             if (constraint == null || constraint.length() == 0) {
-                filteredList.addAll(customRecipeSearch);
+                filteredList.addAll(recipeDataSearch);
             } else {
                 String filterPattern = constraint.toString().toLowerCase().trim();
 
-                for (CustomRecipe item : customRecipeSearch) {
+                for (Recipe item : recipeDataSearch) {
                     if (item.getTitle().toLowerCase().contains(filterPattern)) {
                         filteredList.add(item);
                     }
@@ -114,9 +113,10 @@ public class CustomRecipeRecyclerViewAdapter extends RecyclerView.Adapter<Custom
 
         @Override
         protected void publishResults(CharSequence constraint, FilterResults results) {
-            customRecipes.clear();
-            customRecipes.addAll((List) results.values);
+            recipeData.clear();
+            recipeData.addAll((List) results.values);
             notifyDataSetChanged();
         }
     };
 }
+

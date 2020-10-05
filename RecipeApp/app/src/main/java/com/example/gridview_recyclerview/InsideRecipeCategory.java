@@ -18,7 +18,7 @@ public class InsideRecipeCategory extends AppCompatActivity {
     private InsideRecipeCategoryRecyclerViewAdapter insideRecipeCategoryRecyclerViewAdapter;
     final int gridLayoutWidth = 3;
 
-    Map<String, List<FoodItem>> categoriesMap = new HashMap<>();
+    Map<String, List<Recipe>> categoriesMap = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

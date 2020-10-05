@@ -14,9 +14,9 @@ public class FavoritesManager {
         sharedPreferences = context.getSharedPreferences(RECIPE_SHARED_PREFS, Context.MODE_PRIVATE);
     }
 
-    public List<FoodItem> getFavorites() { //to do: return all food items
+    public List<Recipe> getFavorites() { //to do: return all food items
 
-        List<FoodItem> foodItems = new ArrayList<>();
+        List<Recipe> foodItems = new ArrayList<>();
 
         for (String entry : sharedPreferences.getAll().keySet()) {
             if (entry != null) {

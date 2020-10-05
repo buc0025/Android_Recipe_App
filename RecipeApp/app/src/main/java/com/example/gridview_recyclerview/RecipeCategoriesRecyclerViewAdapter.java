@@ -15,14 +15,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class InsideRecipeCategoryRecyclerViewAdapter extends RecyclerView.Adapter<InsideRecipeCategoryRecyclerViewAdapter.MyViewHolder> implements Filterable {
+public class RecipeCategoriesRecyclerViewAdapter extends RecyclerView.Adapter<RecipeCategoriesRecyclerViewAdapter.MyViewHolder> implements Filterable {
 
     private Context context;
-    private List<FoodItem> recipeData;
-    private List<FoodItem> recipeDataSearch;
+    private List<Recipe> recipeData;
+    private List<Recipe> recipeDataSearch;
 
 
-    public InsideRecipeCategoryRecyclerViewAdapter(Context context, List<FoodItem> recipeData) {
+    public RecipeCategoriesRecyclerViewAdapter(Context context, List<Recipe> recipeData) {
         this.context = context;
         this.recipeData = recipeData;
         recipeDataSearch = new ArrayList<>(recipeData);
@@ -44,23 +44,15 @@ public class InsideRecipeCategoryRecyclerViewAdapter extends RecyclerView.Adapte
 
         holder.tvBookTitle.setText(recipeData.get(position).getTitle());
         holder.imgBookThumbnail.setImageResource(recipeData.get(position).getThumbnail());
-        final FoodItem recipePosition = recipeData.get(position);
 
         //*******Set onclick Listener***********
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(context, RecipeDetails.class);
+                Intent intent = new Intent(context, InsideRecipeCategory.class);
+                intent.putExtra("meal_type", recipeData.get(position).getCategory());
 
-                //***************Passing data to the RecipeDetails activity**********
-                intent.putExtra("ID", recipePosition.getTitle());
-                intent.putExtra("Title", recipePosition.getTitle());
-                intent.putExtra("Category", recipePosition.getCategory());
-                intent.putExtra("Description", recipePosition.getDescription());
-                intent.putExtra("Ingredients", recipePosition.getIngredients());
-                intent.putExtra("Directions", recipePosition.getDirections());
-                intent.putExtra("Thumbnail", recipePosition.getThumbnail());
                 //******start the activity**************
                 context.startActivity(intent);
             }
@@ -90,18 +82,17 @@ public class InsideRecipeCategoryRecyclerViewAdapter extends RecyclerView.Adapte
     public Filter getFilter() {
         return exampleFilter;
     }
-
     private Filter exampleFilter = new Filter() {
         @Override
         protected FilterResults performFiltering(CharSequence constraint) {
-            List<FoodItem> filteredList = new ArrayList<>();
+            List<Recipe> filteredList = new ArrayList<>();
 
             if (constraint == null || constraint.length() == 0) {
                 filteredList.addAll(recipeDataSearch);
             } else {
                 String filterPattern = constraint.toString().toLowerCase().trim();
 
-                for (FoodItem item : recipeDataSearch) {
+                for (Recipe item : recipeDataSearch) {
                     if (item.getTitle().toLowerCase().contains(filterPattern)) {
                         filteredList.add(item);
                     }

@@ -4,9 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,27 +17,32 @@ public class CustomRecipeManager {
         sharedPreferences = context.getSharedPreferences(CUSTOM_RECIPES_SHARED_PREFS, Context.MODE_PRIVATE);
     }
 
-    public void saveRecipe(CustomRecipe item) {
+    public void saveRecipe(CustomRecipe customRecipe) {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         Gson gson = new Gson();
-        String json = gson.toJson(item);
-        editor.putString("custom list", json);
+        String json = gson.toJson(customRecipe);
+        editor.putString(customRecipe.getTitle(), json);
         editor.commit();
     }
 
     public List<CustomRecipe> getRecipes() {
-
         List<CustomRecipe> customRecipes = new ArrayList<>();
-//****************how to add user's input into custom recipe??*****************
-//        for (String entry : sharedPreferences.getAll().keySet()) {
-//            if (entry != null) {
-//                customRecipes.add();
-//            }
-//        }
-        Gson gson = new Gson();
-        String json = sharedPreferences.getString("custom list", null);
-        CustomRecipe obj = gson.fromJson(json, CustomRecipe.class);
-        customRecipes.add(obj);
+
+        for (String entry : sharedPreferences.getAll().keySet()) {
+            Gson gson = new Gson();
+            String json = sharedPreferences.getString(entry, null);
+            CustomRecipe obj = gson.fromJson(json, CustomRecipe.class);
+
+            if (entry != null) {
+                customRecipes.add(obj);
+            }
+        }
         return customRecipes;
+    }
+
+    public void removeRecipe(CustomRecipe customRecipe) {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.remove(customRecipe.getTitle());
+        editor.apply();
     }
 }

@@ -22,7 +22,7 @@
             <ImageView
                 android:layout_width="200dp"
                 android:layout_height="250dp"
-                android:background="@drawable/retro_paper"
+                android:background="@drawable/stock_food_pic"
                 android:id="@+id/ownThumbnail"
                 android:scaleType="centerCrop"/>
 
@@ -71,6 +71,13 @@
                 android:text="Directions"
                 android:textColor="#FFFFFF"
                 android:textSize="18sp"/>
+
+            <Button
+                android:id="@+id/deleteRecipeBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Delete" />
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

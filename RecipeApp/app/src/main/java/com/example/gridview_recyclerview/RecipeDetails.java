@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Switch;
@@ -42,7 +44,7 @@ public class RecipeDetails extends AppCompatActivity {
 
         final ToggleButton favBtn = findViewById(R.id.favBtn);
         final FavoritesManager favoritesManager = new FavoritesManager(RecipeDetails.this);
-        final FoodItem foodItem = new FoodItem(id, title, category, description, ingredients, directions, image);
+        final Recipe foodItem = new Recipe(id, title, category, description, ingredients, directions, image);
         favBtn.setChecked(favoritesManager.isFavorited(foodItem.getuId()));
 
         favBtn.setOnClickListener(new View.OnClickListener() {
@@ -86,5 +88,13 @@ public class RecipeDetails extends AppCompatActivity {
         recipeImage.setImageResource(image);
         recipeIngredients.setText(ingredients);
         recipeDirections.setText(directions);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.share_toolbar, menu);
+
+        return true;
     }
 }

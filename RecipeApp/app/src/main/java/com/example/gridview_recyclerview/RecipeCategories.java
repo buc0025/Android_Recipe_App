@@ -24,6 +24,7 @@ public class RecipeCategories extends AppCompatActivity {
         recyclerView.setLayoutManager(new GridLayoutManager(this, gridLayoutWidth));
         recyclerView.setAdapter(recipeCategoriesRecyclerViewAdapter);
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();

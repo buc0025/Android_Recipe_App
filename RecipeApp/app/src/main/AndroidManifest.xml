@@ -9,7 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".CustomRecipesList"
-            android:label="Recipes"></activity>
+            android:label="Custom Recipes"></activity>
         <activity
             android:name=".OwnRecipe"
             android:label="Recipe" />
