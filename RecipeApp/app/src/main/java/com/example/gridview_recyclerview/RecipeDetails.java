@@ -1,11 +1,13 @@
 package com.example.gridview_recyclerview;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Switch;
@@ -96,5 +98,22 @@ public class RecipeDetails extends AppCompatActivity {
         menuInflater.inflate(R.menu.share_toolbar, menu);
 
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.shareRecipe) {
+            Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+            sharingIntent.setType("text/plain");
+            String shareBody = "Your Body Here"; // link to recipe
+            String shareSubject = "Your Subject Here";
+
+            sharingIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
+            sharingIntent.putExtra(Intent.EXTRA_SUBJECT, shareSubject);
+
+            startActivity(Intent.createChooser(sharingIntent, "Share Using"));
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

@@ -1,10 +1,15 @@
 package com.example.gridview_recyclerview;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -41,9 +46,22 @@ public class OwnRecipe extends AppCompatActivity {
         deleteRecipeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(OwnRecipe.this, "Custom Recipe is deleted", Toast.LENGTH_SHORT).show();
-                CustomRecipe customRecipe = new CustomRecipe(title, category, description, ingredients, directions);
-                customRecipeManager.removeRecipe(customRecipe);
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(OwnRecipe.this);
+
+                builder.setMessage("Are you sure you want to delete recipe?")
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                Toast.makeText(OwnRecipe.this, "Custom Recipe is deleted", Toast.LENGTH_SHORT).show();
+                                CustomRecipe customRecipe = new CustomRecipe(title, category, description, ingredients, directions);
+                                customRecipeManager.removeRecipe(customRecipe);
+                            }
+                        })
+                        .setNegativeButton("No", null);
+
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
             }
         });
     }
@@ -54,5 +72,22 @@ public class OwnRecipe extends AppCompatActivity {
         menuInflater.inflate(R.menu.share_toolbar, menu);
 
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.shareRecipe) {
+            Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+            sharingIntent.setType("text/plain");
+            String shareBody = "Your Body Here"; // link to recipe
+            String shareSubject = "Your Subject Here";
+
+            sharingIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
+            sharingIntent.putExtra(Intent.EXTRA_SUBJECT, shareSubject);
+
+            startActivity(Intent.createChooser(sharingIntent, "Share Using"));
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
