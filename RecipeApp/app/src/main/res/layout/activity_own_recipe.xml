@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".OwnRecipe"
-    android:background="#095866">
+    android:background="@drawable/blank_blackboard">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -16,15 +16,23 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center"
             android:orientation="vertical">
 
+            <androidx.cardview.widget.CardView
+                android:layout_width="250dp"
+                android:layout_height="315dp"
+                xmlns:cardview="http://schemas.android.com/apk/res-auto"
+                cardview:cardCornerRadius="8dp"
+                android:layout_gravity="center">
+
             <ImageView
-                android:layout_width="200dp"
-                android:layout_height="250dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:background="@drawable/stock_food_pic"
                 android:id="@+id/ownThumbnail"
                 android:scaleType="centerCrop"/>
+
+            </androidx.cardview.widget.CardView>
 
             <TextView
                 android:id="@+id/ownTitle"
@@ -34,16 +42,19 @@
                 android:layout_marginTop="10dp"
                 android:textSize="24sp"
                 android:textStyle="bold"
-                android:textColor="#FFFFFF"/>
+                android:textColor="#FFFFFF"
+                android:layout_gravity="center"/>
 
             <TextView
                 android:id="@+id/ownCategory"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Category"
-                android:background="#edecec"
-                android:padding="8dp"
-                android:layout_marginTop="10dp"/>
+                android:textColor="#F56596"
+                android:textSize="18sp"
+                android:textStyle="bold|italic"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"/>
 
             <TextView
                 android:id="@+id/ownDescription"
@@ -52,7 +63,17 @@
                 android:layout_marginTop="10dp"
                 android:text="Description"
                 android:textColor="#FFFFFF"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:layout_gravity="center"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Ingredients:"
+                android:textColor="#F56596"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
 
             <TextView
                 android:id="@+id/ownIngredients"
@@ -62,6 +83,15 @@
                 android:text="Ingredients"
                 android:textColor="#FFFFFF"
                 android:textSize="18sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Directions:"
+                android:textColor="#F56596"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
 
             <TextView
                 android:id="@+id/ownDirections"
@@ -77,7 +107,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="Delete" />
+                android:text="Delete"
+                android:layout_gravity="center"/>
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
