@@ -1,5 +1,6 @@
 package com.example.gridview_recyclerview;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -9,6 +10,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -35,6 +39,29 @@ public class InsideRecipeCategory extends AppCompatActivity {
         Intent intent = getIntent();
         String category = intent.getExtras().getString("meal_type");
 
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setSelectedItemId(R.id.homeNavigation);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                switch (menuItem.getItemId()) {
+                    case R.id.favoritesNavigation:
+                        startActivity(new Intent(getApplicationContext(), Favorites.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.homeNavigation:
+                        startActivity(new Intent(getApplicationContext(), RecipeCategories.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.customNavigation:
+                        startActivity(new Intent(getApplicationContext(), CustomRecipesList.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                }
+                return false;
+            }
+        });
+
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.insideCategoryRecyclerViewId);
         insideRecipeCategoryRecyclerViewAdapter = new InsideRecipeCategoryRecyclerViewAdapter(this, categoriesMap.get(category));
         recyclerView.setLayoutManager(new GridLayoutManager(this, gridLayoutWidth));
@@ -44,7 +71,7 @@ public class InsideRecipeCategory extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.example_menu, menu);
+        inflater.inflate(R.menu.search_toolbar, menu);
 
         MenuItem searchItem = menu.findItem(R.id.actionSearch);
         SearchView searchView = (SearchView) searchItem.getActionView();
