@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -49,5 +51,23 @@ public class CustomRecipesList extends AppCompatActivity {
         customRecipeRecyclerViewAdapter = new CustomRecipeRecyclerViewAdapter(this, customRecipeManager.getRecipes());
         recyclerView.setLayoutManager(new GridLayoutManager(this, gridLayoutWidth));
         recyclerView.setAdapter(customRecipeRecyclerViewAdapter);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.add_recipe_toolbar, menu);
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.addRecipe) {
+            Intent intent = new Intent(CustomRecipesList.this, CreateRecipe.class);
+            startActivity(intent);
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

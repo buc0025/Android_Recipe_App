@@ -97,7 +97,7 @@ public class RecipeDetails extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.share_search_toolbar, menu);
+        menuInflater.inflate(R.menu.share_toolbar, menu);
 
         return true;
     }
@@ -115,10 +115,6 @@ public class RecipeDetails extends AppCompatActivity {
             sharingIntent.putExtra(Intent.EXTRA_SUBJECT, shareSubject);
 
             startActivity(Intent.createChooser(sharingIntent, "Share Using"));
-        }
-        if (id == R.id.onlineSearch) {
-            Intent intent = new Intent(RecipeDetails.this, BrowseOnline.class);
-            startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }

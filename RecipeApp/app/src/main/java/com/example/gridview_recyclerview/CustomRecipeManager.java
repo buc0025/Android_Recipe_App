@@ -17,7 +17,7 @@ public class CustomRecipeManager {
         sharedPreferences = context.getSharedPreferences(CUSTOM_RECIPES_SHARED_PREFS, Context.MODE_PRIVATE);
     }
 
-    public void saveRecipe(CustomRecipe customRecipe) {
+    public void saveRecipe(Recipe customRecipe) {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         Gson gson = new Gson();
         String json = gson.toJson(customRecipe);
@@ -25,13 +25,13 @@ public class CustomRecipeManager {
         editor.commit();
     }
 
-    public List<CustomRecipe> getRecipes() {
-        List<CustomRecipe> customRecipes = new ArrayList<>();
+    public List<Recipe> getRecipes() {
+        List<Recipe> customRecipes = new ArrayList<>();
 
         for (String entry : sharedPreferences.getAll().keySet()) {
             Gson gson = new Gson();
             String json = sharedPreferences.getString(entry, null);
-            CustomRecipe obj = gson.fromJson(json, CustomRecipe.class);
+            Recipe obj = gson.fromJson(json, Recipe.class);
 
             if (entry != null) {
                 customRecipes.add(obj);
@@ -40,7 +40,7 @@ public class CustomRecipeManager {
         return customRecipes;
     }
 
-    public void removeRecipe(CustomRecipe customRecipe) {
+    public void removeRecipe(Recipe customRecipe) {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.remove(customRecipe.getTitle());
         editor.apply();

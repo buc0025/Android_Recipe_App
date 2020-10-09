@@ -54,7 +54,7 @@ public class OwnRecipe extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 Toast.makeText(OwnRecipe.this, "Custom Recipe is deleted", Toast.LENGTH_SHORT).show();
-                                CustomRecipe customRecipe = new CustomRecipe(title, category, description, ingredients, directions);
+                                Recipe customRecipe = new Recipe(title, title, category, description, ingredients, directions, R.drawable.stock_food_pic);
                                 customRecipeManager.removeRecipe(customRecipe);
                             }
                         })

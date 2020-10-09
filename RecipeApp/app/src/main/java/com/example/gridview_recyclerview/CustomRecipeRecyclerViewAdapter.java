@@ -20,10 +20,10 @@ import java.util.List;
 public class CustomRecipeRecyclerViewAdapter extends RecyclerView.Adapter<CustomRecipeRecyclerViewAdapter.MyViewHolder> implements Filterable {
 
     private Context context;
-    private List<CustomRecipe> customRecipes;
-    private List<CustomRecipe> customRecipeSearch;
+    private List<Recipe> customRecipes;
+    private List<Recipe> customRecipeSearch;
 
-    public CustomRecipeRecyclerViewAdapter(Context context, List<CustomRecipe> customRecipes) {
+    public CustomRecipeRecyclerViewAdapter(Context context, List<Recipe> customRecipes) {
         this.context = context;
         this.customRecipes = customRecipes;
         customRecipeSearch = new ArrayList<>(customRecipes);
@@ -46,7 +46,7 @@ public class CustomRecipeRecyclerViewAdapter extends RecyclerView.Adapter<Custom
         holder.tvBookTitle.setText(customRecipes.get(position).getTitle());
 //        holder.imgBookThumbnail.setImageResource(recipeData.get(position).getThumbnail());
         holder.imgBookThumbnail.setImageResource(R.drawable.stock_food_pic);
-        final CustomRecipe recipePosition = customRecipes.get(position);
+        final Recipe recipePosition = customRecipes.get(position);
 
         //*******Set onclick Listener***********
         holder.cardView.setOnClickListener(new View.OnClickListener() {
@@ -94,14 +94,14 @@ public class CustomRecipeRecyclerViewAdapter extends RecyclerView.Adapter<Custom
     private Filter exampleFilter = new Filter() {
         @Override
         protected FilterResults performFiltering(CharSequence constraint) {
-            List<CustomRecipe> filteredList = new ArrayList<>();
+            List<Recipe> filteredList = new ArrayList<>();
 
             if (constraint == null || constraint.length() == 0) {
                 filteredList.addAll(customRecipeSearch);
             } else {
                 String filterPattern = constraint.toString().toLowerCase().trim();
 
-                for (CustomRecipe item : customRecipeSearch) {
+                for (Recipe item : customRecipeSearch) {
                     if (item.getTitle().toLowerCase().contains(filterPattern)) {
                         filteredList.add(item);
                     }

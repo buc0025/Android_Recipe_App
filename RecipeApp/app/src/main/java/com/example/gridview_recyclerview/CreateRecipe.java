@@ -27,22 +27,15 @@ public class CreateRecipe extends AppCompatActivity {
 
                 CustomRecipeManager customRecipeManager = new CustomRecipeManager(CreateRecipe.this);
 
-                //***********Uses Custom Recipe template**************
-                final CustomRecipe customRecipe = new CustomRecipe(ownRecipeTitle.getText().toString(),
-                        ownRecipeCategory.getText().toString(),
-                        ownRecipeDescription.getText().toString(),
-                        ownRecipeIngredients.getText().toString(),
-                        ownRecipeDirections.getText().toString());
-
-                //***********Uses Fooditem template**************
+                //***********Uses Recipe template**************
                 final String customTitle = ownRecipeTitle.getText().toString();
-                final Recipe foodItem = new Recipe(customTitle.replace(" ", "") + Math.random() * 500,
+                final Recipe customRecipe = new Recipe(customTitle.replace(" ", "") + Math.random() * 500,
                         customTitle,
                         ownRecipeCategory.getText().toString(),
                         ownRecipeDescription.getText().toString(),
                         ownRecipeIngredients.getText().toString(),
                         ownRecipeDirections.getText().toString(),
-                        R.drawable.pizza);
+                        R.drawable.stock_food_pic);
 
                 customRecipeManager.saveRecipe(customRecipe);
                                 openOwnRecipeActivity();
