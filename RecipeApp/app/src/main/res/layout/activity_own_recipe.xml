@@ -111,6 +111,7 @@
                 android:layout_gravity="center"/>
 
         </LinearLayout>
+
     </androidx.core.widget.NestedScrollView>
 
 </LinearLayout>

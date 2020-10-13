@@ -2,26 +2,29 @@ package com.example.gridview_recyclerview;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.os.Bundle;
+import android.util.Base64;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 public class RecipeDetails extends AppCompatActivity {
 
     private TextView recipeName, recipeDescription, recipeCategory, recipeIngredients, recipeDirections;
     private ImageView recipeImage;
-    private Switch favSwitch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +37,6 @@ public class RecipeDetails extends AppCompatActivity {
         recipeImage = (ImageView) findViewById(R.id.bookThumbnail);
         recipeIngredients = (TextView) findViewById(R.id.txtIngredients);
         recipeDirections = (TextView) findViewById(R.id.txtDirections);
-//        favSwitch = findViewById(R.id.favSwitch);
 
         //***********Receive data*************
         Intent intent = getIntent();
@@ -66,25 +68,6 @@ public class RecipeDetails extends AppCompatActivity {
             }
         });
 
-        //*********************If a switch is decided to be used to add and remove favorites*****************************
-
-//        favSwitch.setChecked(favoritesManager.isFavorited(foodItem));
-//
-//        favSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(CompoundButton compoundButton, boolean changed) {
-//                if (changed) {
-//                    Toast.makeText(RecipeDetails.this, "Saved to favorites", Toast.LENGTH_SHORT).show();
-//                    favoritesManager.saveFavorites(foodItem);
-//                    favSwitch.setChecked(true);
-//                } else {
-//                    Toast.makeText(RecipeDetails.this, "Remove from favorites", Toast.LENGTH_SHORT).show();
-//                    favoritesManager.removeFavorites(foodItem);
-//                    favSwitch.setChecked(false);
-//                }
-//            }
-//        });
-
         //*********Setting values**********
         recipeName.setText(title);
         recipeDescription.setText(description);
@@ -92,6 +75,22 @@ public class RecipeDetails extends AppCompatActivity {
         recipeImage.setImageResource(image);
         recipeIngredients.setText(ingredients);
         recipeDirections.setText(directions);
+        
+        printKeyHash();
+    }
+
+    private void printKeyHash() {
+        try {
+            PackageInfo info = getPackageManager().getPackageInfo("com.example.recipeapp",
+                    PackageManager.GET_SIGNATURES);
+            for (Signature signature : info.signatures) {
+                MessageDigest md = MessageDigest.getInstance("SHA");
+                md.update(signature.toByteArray());
+                Log.d("KeyHash", Base64.encodeToString(md.digest(),Base64.DEFAULT));
+            }
+        } catch (PackageManager.NameNotFoundException | NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

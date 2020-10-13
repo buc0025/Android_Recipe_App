@@ -53,22 +53,8 @@
             android:textSize="18sp"
             android:textStyle="bold|italic"
             android:layout_marginTop="10dp"
-                android:layout_gravity="center"/>
+            android:layout_gravity="center"/>
 
-<!--            <Button-->
-<!--                android:id="@+id/favBtn"-->
-<!--                android:layout_marginTop="10dp"-->
-<!--                android:layout_width="30dp"-->
-<!--                android:layout_height="30dp"-->
-<!--                 android:background="@drawable/ic_favorite_shadow"/>-->
-
-<!--            <Switch-->
-<!--                android:id="@+id/favSwitch"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="Favorite  "-->
-<!--                android:textSize="20sp"-->
-<!--                android:textColor="#FFFFFF"/>-->
             <ToggleButton
                 android:id="@+id/favBtn"
                 android:layout_marginTop="10dp"
@@ -128,9 +114,9 @@
                 android:textColor="#FFFFFF"
                 android:textSize="18sp"
                 android:paddingHorizontal="12dp"/>
-
             
         </LinearLayout>
+
     </androidx.core.widget.NestedScrollView>
 
 </RelativeLayout>

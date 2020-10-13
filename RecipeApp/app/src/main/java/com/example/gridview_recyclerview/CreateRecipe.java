@@ -29,7 +29,7 @@ public class CreateRecipe extends AppCompatActivity {
 
                 //***********Uses Recipe template**************
                 final String customTitle = ownRecipeTitle.getText().toString();
-                final Recipe customRecipe = new Recipe(customTitle.replace(" ", "") + Math.random() * 500,
+                final Recipe customRecipe = new Recipe(customTitle.replace(" ", "") + Math.random() * Integer.MAX_VALUE,
                         customTitle,
                         ownRecipeCategory.getText().toString(),
                         ownRecipeDescription.getText().toString(),

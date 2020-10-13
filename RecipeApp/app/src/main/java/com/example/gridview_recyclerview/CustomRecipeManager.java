@@ -2,9 +2,7 @@ package com.example.gridview_recyclerview;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-
 import com.google.gson.Gson;
-
 import java.util.ArrayList;
 import java.util.List;
 
