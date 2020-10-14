@@ -9,8 +9,16 @@ Switching from one activity to another plays a major role for better user experi
 ## Features
 
 - Sharing capability
+
+![](images2/recipe_app_fb_share.png)
+
 - Favoriting recipes
+
+![](images/recipe_app_recipe_details.png)
+
 - Designing own custom recipes
+
+![](images/recipe_app_create.png)
 
 Visit [Android Studio](https://developer.android.com/studio) and [Facebook Developer](https://developers.facebook.com/?no_redirect=1) for 
 more on creating and sharing your own android project.
