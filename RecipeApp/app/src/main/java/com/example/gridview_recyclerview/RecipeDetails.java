@@ -18,6 +18,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
@@ -75,8 +77,31 @@ public class RecipeDetails extends AppCompatActivity {
         recipeImage.setImageResource(image);
         recipeIngredients.setText(ingredients);
         recipeDirections.setText(directions);
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setSelectedItemId(R.id.homeNavigation);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                switch (menuItem.getItemId()) {
+                    case R.id.favoritesNavigation:
+                        startActivity(new Intent(getApplicationContext(), Favorites.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.homeNavigation:
+                        startActivity(new Intent(getApplicationContext(), RecipeCategories.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.customNavigation:
+                        startActivity(new Intent(getApplicationContext(), CustomRecipesList.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                }
+                return false;
+            }
+        });
         
-        printKeyHash();
+//        printKeyHash();
     }
 
     private void printKeyHash() {
