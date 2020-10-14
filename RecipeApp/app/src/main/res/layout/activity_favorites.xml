@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/blackboard_menu_no_title"
     android:padding="8dp"
-    tools:context=".InsideRecipeCategory">
+    tools:context=".activities.InsideRecipeCategoryActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"

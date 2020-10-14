@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/blackboard_menu"
     android:padding="8dp"
-    tools:context=".RecipeCategories">
+    tools:context=".activities.RecipeCategoriesActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/categoryRecyclerViewId"

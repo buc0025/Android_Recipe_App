@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/blackboard_menu_no_title"
     android:orientation="vertical"
-    tools:context=".CreateRecipe">
+    tools:context=".activities.CreateRecipeActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
