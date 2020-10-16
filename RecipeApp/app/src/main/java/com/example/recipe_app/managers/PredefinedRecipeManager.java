@@ -17,6 +17,7 @@ public class PredefinedRecipeManager {
     public static List<Recipe> appetizerList;
     public static List<Recipe> dessertList;
     public static List<Recipe> snackList;
+    public static List<Recipe> allRecipesList;
 
     static {
         breakfastList = new ArrayList<>();
@@ -65,23 +66,31 @@ public class PredefinedRecipeManager {
         mainPageFoodCategories.add(new Recipe("Snacks category", "Snacks", "Snacks","Junk food to pig out to","salt\n"+"pepper\n"+"egg", "put in over for 20 minutes\n"+"take out to cool",R.drawable.chips));
 
         recipeById = new HashMap<>();
+        allRecipesList = new ArrayList<>();
+
         for (Recipe i : breakfastList) {
             recipeById.put(i.getuId(), i);
+            allRecipesList.add(i);
         }
         for (Recipe i : lunchList) {
             recipeById.put(i.getuId(), i);
+            allRecipesList.add(i);
         }
         for (Recipe i : dinnerList) {
             recipeById.put(i.getuId(), i);
+            allRecipesList.add(i);
         }
         for (Recipe i : dessertList) {
             recipeById.put(i.getuId(), i);
+            allRecipesList.add(i);
         }
         for (Recipe i : appetizerList) {
             recipeById.put(i.getuId(), i);
+            allRecipesList.add(i);
         }
         for (Recipe i : snackList) {
             recipeById.put(i.getuId(), i);
+            allRecipesList.add(i);
         }
     }
 }

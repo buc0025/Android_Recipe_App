@@ -4,25 +4,31 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.example.recipe_app.R;
-import com.example.recipe_app.models.RecipeCategoriesRecyclerViewAdapter;
-import com.example.recipe_app.managers.PredefinedRecipeManager;
+import com.example.recipe_app.managers.AllRecipesManager;
+import com.example.recipe_app.models.AllRecipesRecyclerViewAdapter;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class RecipeCategoriesActivity extends AppCompatActivity {
-    private RecipeCategoriesRecyclerViewAdapter recipeCategoriesRecyclerViewAdapter;
+public class AllRecipesActivity extends AppCompatActivity {
+
+    private AllRecipesRecyclerViewAdapter allRecipesRecyclerViewAdapter;
     final int gridLayoutWidth = 3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.recipe_categories_page);
+        setContentView(R.layout.activity_all_recipes);
+
+        AllRecipesManager allRecipesManager = new AllRecipesManager(AllRecipesActivity.this);
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.allRecipesRecyclerViewId);
+        allRecipesRecyclerViewAdapter = new AllRecipesRecyclerViewAdapter(this, allRecipesManager.getAllRecipes());
+        recyclerView.setLayoutManager(new GridLayoutManager(this, gridLayoutWidth));
+        recyclerView.setAdapter(allRecipesRecyclerViewAdapter);
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.homeNavigation);
@@ -35,6 +41,8 @@ public class RecipeCategoriesActivity extends AppCompatActivity {
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.homeNavigation:
+                        startActivity(new Intent(getApplicationContext(), RecipeCategoriesActivity.class));
+                        overridePendingTransition(0,0);
                         return true;
                     case R.id.customNavigation:
                         startActivity(new Intent(getApplicationContext(), CustomRecipesListActivity.class));
@@ -44,28 +52,5 @@ public class RecipeCategoriesActivity extends AppCompatActivity {
                 return false;
             }
         });
-
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.categoryRecyclerViewId);
-        recipeCategoriesRecyclerViewAdapter = new RecipeCategoriesRecyclerViewAdapter(this, PredefinedRecipeManager.mainPageFoodCategories);
-        recyclerView.setLayoutManager(new GridLayoutManager(this, gridLayoutWidth));
-        recyclerView.setAdapter(recipeCategoriesRecyclerViewAdapter);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.all_recipes_toolbar, menu);
-
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.show_all_recipes) {
-            Intent intent = new Intent(RecipeCategoriesActivity.this, AllRecipesActivity.class);
-            startActivity(intent);
-        }
-        return super.onOptionsItemSelected(item);
     }
 }
