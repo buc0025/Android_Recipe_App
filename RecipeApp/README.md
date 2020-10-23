@@ -12,11 +12,11 @@ Switching from one activity to another plays a major role for better user experi
 
 - Sharing capability
 
-![](images2/recipe_app_fb_share.png)
+![](images2/recipe_app_fb_share2.png)
 
 - Favoriting recipes
 
-![](images/recipe_app_recipe_details.png)
+![](images2/recipe_app_recipe_details2.png)
 
 - Designing own custom recipes
 
