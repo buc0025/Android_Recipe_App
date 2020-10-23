@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
@@ -21,6 +23,11 @@ import android.widget.ToggleButton;
 import com.example.recipe_app.R;
 import com.example.recipe_app.managers.FavoritesManager;
 import com.example.recipe_app.models.Recipe;
+import com.facebook.CallbackManager;
+import com.facebook.share.model.SharePhoto;
+import com.facebook.share.model.SharePhotoContent;
+import com.facebook.share.widget.ShareButton;
+import com.facebook.share.widget.ShareDialog;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.security.MessageDigest;
@@ -30,11 +37,18 @@ public class RecipeDetailsActivity extends AppCompatActivity {
 
     private TextView recipeName, recipeDescription, recipeCategory, recipeIngredients, recipeDirections;
     private ImageView recipeImage;
+    CallbackManager callbackManager;
+    ShareDialog shareDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recipe_page);
+
+        //Init FB
+        callbackManager = CallbackManager.Factory.create();
+        shareDialog = new ShareDialog(this);
+        ShareButton shareButton = (ShareButton) findViewById(R.id.fb_share_button);
 
         recipeName = (TextView) findViewById(R.id.txtTitle);
         recipeDescription = (TextView) findViewById(R.id.txtDescription);
@@ -72,6 +86,15 @@ public class RecipeDetailsActivity extends AppCompatActivity {
                 }
             }
         });
+
+        Bitmap fbshare = BitmapFactory.decodeResource(getResources(), R.drawable.recipe_app_main);
+        SharePhoto photo = new SharePhoto.Builder()
+                .setBitmap(fbshare)
+                .build();
+        SharePhotoContent content = new SharePhotoContent.Builder()
+                .addPhoto(photo)
+                .build();
+        shareButton.setShareContent(content);
 
         //*********Setting values**********
         recipeName.setText(title);
@@ -135,8 +158,8 @@ public class RecipeDetailsActivity extends AppCompatActivity {
         if (id == R.id.shareRecipe) {
             Intent sharingIntent = new Intent(Intent.ACTION_SEND);
             sharingIntent.setType("text/plain");
-            String shareBody = "Your Body Here"; // link to recipe
-            String shareSubject = "Your Subject Here";
+            String shareBody = "Link to Recipe App"; // link to recipe
+            String shareSubject = "Link to Recipe App";
 
             sharingIntent.putExtra(Intent.EXTRA_TEXT, shareBody);
             sharingIntent.putExtra(Intent.EXTRA_SUBJECT, shareSubject);

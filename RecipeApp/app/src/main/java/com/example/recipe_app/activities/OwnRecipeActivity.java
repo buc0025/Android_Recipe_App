@@ -5,6 +5,8 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -17,14 +19,36 @@ import android.widget.Toast;
 import com.example.recipe_app.R;
 import com.example.recipe_app.models.Recipe;
 import com.example.recipe_app.managers.CustomRecipeManager;
+import com.facebook.CallbackManager;
+import com.facebook.share.model.SharePhoto;
+import com.facebook.share.model.SharePhotoContent;
+import com.facebook.share.widget.ShareButton;
+import com.facebook.share.widget.ShareDialog;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class OwnRecipeActivity extends AppCompatActivity {
+
+    CallbackManager callbackManager;
+    ShareDialog shareDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_own_recipe);
+
+        //Init FB
+        callbackManager = CallbackManager.Factory.create();
+        shareDialog = new ShareDialog(this);
+        ShareButton shareButton = (ShareButton) findViewById(R.id.fb_share_button);
+
+        Bitmap fbshare = BitmapFactory.decodeResource(getResources(), R.drawable.recipe_app_main);
+        SharePhoto photo = new SharePhoto.Builder()
+                .setBitmap(fbshare)
+                .build();
+        SharePhotoContent content = new SharePhotoContent.Builder()
+                .addPhoto(photo)
+                .build();
+        shareButton.setShareContent(content);
 
         Intent intent = getIntent();
         final String title = intent.getStringExtra("Custom Title");
